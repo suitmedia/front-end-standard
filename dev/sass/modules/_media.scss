@@ -1,0 +1,14 @@
+
+.media {
+    display: flex;
+    align-items: flex-start;
+}
+
+.media-figure {
+    margin-right: ($space / 2);
+}
+
+.media-content {
+    flex: 1;
+    min-width: 0;
+}

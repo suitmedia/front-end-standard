@@ -1,0 +1,49 @@
+
+// Config
+// ------------------------------------------------------------------------ //
+
+$pagination_padding         : ($space / 4) ($space / 2);
+
+$pagination_border          : #ddd;
+$pagination_color           : #666;
+$pagination_bg              : #eee;
+
+$pagination_active_border   : #555;
+$pagination_active_color    : #f8f8f8;
+$pagination_active_bg       : #888;
+
+
+// Style
+// ------------------------------------------------------------------------ //
+
+/*ul|ol*/.pagination {
+    padding: 0;
+    margin: 0 0 $space 0;
+    list-style: none;
+    text-align: center;
+    user-select: none;
+
+    li {
+        display: inline-block;
+    }
+
+    a {
+        display: block;
+        padding: $pagination_padding;
+        border: solid 1px $pagination_border;
+        color: $pagination_color;
+        background: $pagination_bg;
+
+        &:hover,
+        &:focus,
+        &.active {
+            border-color: $pagination_active_border;
+            color: $pagination_active_color;
+            background: $pagination_active_bg;
+        }
+
+        &.active {
+            cursor: default;
+        }
+    }
+}

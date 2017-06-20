@@ -1,0 +1,38 @@
+
+// http://goo.gl/E1YNsD
+
+// Config
+// ------------------------------------------------------------------------ //
+
+$bread_space        : ($space / 2);
+$bread_separator    : '→';
+
+
+// Style
+// ------------------------------------------------------------------------ //
+
+/*ul*/.breadcrumb {
+    padding: 0;
+    list-style: none;
+
+    &:after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+
+    > li {
+        position: relative;
+        float: left;
+
+        &:before {
+            margin: 0 $bread_space;
+            color: #444;
+            content: $bread_separator;
+        }
+
+        &:first-child:before {
+            display: none;
+        }
+    }
+}
