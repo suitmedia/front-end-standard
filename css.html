@@ -33,7 +33,7 @@
                             </ol>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="scss">selector {
+        <pre><code class="scss" hljs>selector {
         @include thing1;
         @include thing2;
 
@@ -107,7 +107,7 @@
                             <p>Maksimal nesting adalah 3 level, lebih dari itu hindari. Nesting level paling akhir apabila adalah Pseudo Class atau Pseudo Element diperbolehkan.</p>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="scss">// Bad
+        <pre><code class="scss" hljs>// Bad
         ul {
         li {
             a {
@@ -153,7 +153,7 @@
                             <p>Maksimal nilai z-index adalah 20, tidak boleh lebih.</p>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="css">header {
+        <pre><code class="css" hljs>header {
         position: relative;
         z-index: 2;
         }
@@ -184,7 +184,7 @@
                             <p>Agar lebih mudah dibaca dan maintainable, tambahkan space dan new line secukupnya.</p>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="scss">// Bad
+        <pre><code class="scss" hljs>// Bad
         a{
         prop: value;
         &:hover,&:focus{
@@ -241,7 +241,7 @@
                             <p>Khusus gradient, ikuti <a href="//developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient">deklarasi yang telah ditetapkan oleh W3</a>.</p>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="scss">.box {
+        <pre><code class="scss" hljs>.box {
         background-image: linear-gradient(to bottom, #fff, #eee);
         transform: scale(1);
         transition: all .3s ease;
@@ -265,7 +265,7 @@
                             <p>Penggunakan <code>!important</code> hanya diperbolehkan untuk override style 3<sup>rd</sup> party ataupun style plugin.</p>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="css">/* NO! */
+        <pre><code class="css" hljs>/* NO! */
         #myElem {
         prop: value;
         }
@@ -300,7 +300,7 @@
                             <p>Styles harus dibuat se-abstract mungkin agar dapat dipakai berkali-kali dan dapat dipakai untuk segala konteks.</p>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="css">/* NO! */
+        <pre><code class="css" hljs>/* NO! */
         .btn-download {
         prop: value;
         }
@@ -342,7 +342,7 @@
                             <p>Kalaupun memang ada style khusus untuk tiap-tiap element contoh untuk article, wrap dengan sebuah class lalu declare contextual style berdasarkan wrappernya.</p>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="scss">// NO!
+        <pre><code class="scss" hljs>// NO!
         h1 {
         text-decoration: underline;
         text-transform: uppercase;
@@ -403,7 +403,7 @@
                             <p>Selain itu apabila ke depannya markup diubah, artinya kita harus mengubah css kita juga. Dengan menggunakan class, walau markup berubah, tidak akan mempengaruhi style.</p>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="css">/* NO! */
+        <pre><code class="css" hljs>/* NO! */
         .highlight {
         float: left;
         width: 30%;
@@ -449,7 +449,7 @@
                             <p>Memang memudahkan jadi tidak perlu menulis berulang-ulang, namun itu membuat file .scss susah untuk di index/search dan akan merepotkan developer penerus.</p>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="scss">/* NO! */
+        <pre><code class="scss" hljs>/* NO! */
         .highlight {
         ...
 
@@ -497,10 +497,10 @@
                             </ul>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="scss">/* NO! */
+        <pre><code class="scss" hljs>/* NO! */
         @import url('hello.css');</code></pre> &nbsp;
                                     
-        <pre><code class="html">&lt;!-- YES! -->
+        <pre><code class="html" hljs>&lt;!-- YES! -->
         &lt;link rel="stylesheet" href="hello.css"&gt;
         &lt;!-- or use scss import --></code></pre>
                         </div>
@@ -527,7 +527,7 @@
                             </ul>
                         </div>
                         <div class="bzg_c" data-col="l7" data-sticky>
-        <pre><code class="scss">/* NO! */
+        <pre><code class="scss" hljs>/* NO! */
         div {
         position: relative;
         top: 0;

@@ -11,7 +11,6 @@
         _objectFit      : `${path.js}object-fit-images.min.js`
     }
 
-
     const isActive = 'is-active'
 
     const Site = {
@@ -38,7 +37,7 @@
         },
 
         angularModule() {
-            const app = angular.module('myApp', ['ngRoute', 'ngSanitize'])
+            const app = angular.module('myApp', ['ngRoute', 'ngSanitize', 'hljs'])
 
             app.controller('mainCtrl', ($scope, $route) => {
                 $scope.$route = $route;
