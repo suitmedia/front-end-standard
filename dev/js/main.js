@@ -11,7 +11,7 @@
         _objectFit      : `${path.js}object-fit-images.min.js`
     }
 
-    const app = angular.module('myApp', ['ui.router'])
+    const app = angular.module('myApp', ['ngRoute', 'ngSanitize'])
 
     const isActive = 'is-active'
 
@@ -83,46 +83,53 @@
         })
     }
 
-    app.controller('styleguidesCtrl', [ '$scope', function ($scope){
-        //$scope.current = "state"
+    app.controller('mainCtrl', function ($scope, $route){
+        //$scope.pageHeader = "Hehe"
+        $scope.$route = $route;
+    })
+
+    app.controller('homeCtrl', [ '$scope', function ($scope){
+        $scope.pageHeader = "Suitmedia <br>Front-end Styleguides"
     }])
 
-    app.config(function($stateProvider) {
-        var homePage = {
-            name: 'home',
-            url: '/',
-            templateUrl: 'home.html'
-        }
+    app.controller('cssCtrl', [ '$scope', function ($scope){
+        $scope.pageHeader = "Suitmedia <br>CSS Styleguides"
+    }])
 
-        var cssPage = {
-            name: 'css',
-            url: '/css',
-            templateUrl: 'css.html'
-        }
+    app.controller('htmlCtrl', [ '$scope', function ($scope){
+        $scope.pageHeader = "Suitmedia <br>HTML Styleguides"
+    }])
 
-        var htmlPage = {
-            name: 'html',
-            url: '/html',
-            templateUrl: 'html.html'
-        }
+    app.controller('toolsCtrl', [ '$scope', function ($scope){
+        $scope.pageHeader = "Front-end Tools/Plugins"
+    }])
 
-        var toolsPage = {
-            name: 'tools',
-            url: '/tools',
-            templateUrl: 'tools.html'
-        }
+    app.controller('jsCtrl', [ '$scope', function ($scope){
+        $scope.pageHeader = "Suitmedia <br>Javascript Styleguides"
+    }])
 
-        var jsPage = {
-            name: 'js',
-            url: '/js',
-            templateUrl: 'js.html'
-        }
-
-        $stateProvider.state(homePage);
-        $stateProvider.state(cssPage);
-        $stateProvider.state(htmlPage);
-        $stateProvider.state(jsPage);
-        $stateProvider.state(toolsPage);
-    });
+    app.config(function($routeProvider) {
+        $routeProvider
+        .when("/", {
+            templateUrl: 'home.html',
+            controller: 'homeCtrl'
+        })
+        .when("/css", {
+            templateUrl: 'css.html',
+            controller: 'cssCtrl'
+        })
+        .when("/html", {
+            templateUrl: "html.html",
+            controller: 'htmlCtrl'
+        })
+        .when("/tools", {
+            templateUrl: "tools.html",
+            controller: 'toolsCtrl'
+        })
+        .when("/js", {
+            templateUrl: "js.html",
+            controller: 'jsCtrl'
+        })
+    })
 
 })(window, document)

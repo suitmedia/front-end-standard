@@ -1626,11 +1626,6 @@ code {
   display: inline-block;
 }
 
-.breadcrumb li:after {
-  margin: 0 .4em;
-  content: '\2192';
-}
-
 .breadcrumb li:last-child:after {
   content: '';
 }
@@ -1667,6 +1662,52 @@ code {
   padding: 0;
   position: absolute;
   width: 1px;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.ng-enter {
+  -webkit-animation: fadeIn 0.5s both ease;
+          animation: fadeIn 0.5s both ease;
+}
+
+.ng-leave {
+  -webkit-animation: fadeOut 0.5s both ease;
+          animation: fadeOut 0.5s both ease;
 }
 
 html {

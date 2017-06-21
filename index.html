@@ -35,21 +35,21 @@
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ng-controller="styleguidesCtrl">
+    <div ng-controller="mainCtrl">
         <header class="main-header">
             <div class="container">
-                <h1 class="page-title">Suitmedia <br>Front-end Styleguides</h1>
+                <h1 class="page-title" ng-bind-html="$route.current.scope.pageHeader"></h1>
             </div>
         </header>
-
-        <ui-view></ui-view>
-        <button ui-sref="home">go home</button>
+        
+        <ng-view></ng-view>
     </div>
 
     <script>window.myPrefix = '';</script>
     <script src="assets/js/vendor/jquery.min.js"></script>
     <script src="assets/js/vendor/angular.min.js"></script>
-    <script src="assets/js/vendor/angular-ui-router.min.js"></script>
+    <script src="assets/js/vendor/angular-route.min.js"></script>
+    <script src="assets/js/vendor/angular-sanitize.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,promise,fetch"></script>
     <script src="assets/js/main.min.js"></script>
 </body>
