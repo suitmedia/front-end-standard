@@ -11,7 +11,6 @@
         _objectFit      : `${path.js}object-fit-images.min.js`
     }
 
-    const app = angular.module('myApp', ['ngRoute', 'ngSanitize'])
 
     const isActive = 'is-active'
 
@@ -37,6 +36,58 @@
                 objectFitImages()
             })
         },
+
+        angularModule() {
+            const app = angular.module('myApp', ['ngRoute', 'ngSanitize'])
+
+            app.controller('mainCtrl', ($scope, $route) => {
+                $scope.$route = $route;
+            })
+
+            app.controller('homeCtrl', ($scope) => {
+                $scope.pageHeader = 'Suitmedia <br>Front-end Styleguides'
+            })
+
+            app.controller('cssCtrl', ($scope) => {
+                $scope.pageHeader = 'Suitmedia <br>CSS Styleguides'
+            })
+
+            app.controller('htmlCtrl', ($scope) => {
+                $scope.pageHeader = 'Suitmedia <br>HTML Styleguides'
+            })
+
+            app.controller('toolsCtrl', ($scope) => {
+                $scope.pageHeader = 'Front-end Tools/Plugins'
+            })
+
+            app.controller('jsCtrl', ($scope) => {
+                $scope.pageHeader = 'Suitmedia <br>Javascript Styleguides'
+            })
+
+            app.config( $routeProvider => {
+                $routeProvider
+                .when('/', {
+                    templateUrl: 'home.html',
+                    controller: 'homeCtrl'
+                })
+                .when('/css', {
+                    templateUrl: 'css.html',
+                    controller: 'cssCtrl'
+                })
+                .when('/html', {
+                    templateUrl: 'html.html',
+                    controller: 'htmlCtrl'
+                })
+                .when('/tools', {
+                    templateUrl: 'tools.html',
+                    controller: 'toolsCtrl'
+                })
+                .when('/js', {
+                    templateUrl: 'js.html',
+                    controller: 'jsCtrl'
+                })
+            })
+        }
     }
 
     Promise.all([
@@ -82,54 +133,5 @@
             })
         })
     }
-
-    app.controller('mainCtrl', function ($scope, $route){
-        //$scope.pageHeader = "Hehe"
-        $scope.$route = $route;
-    })
-
-    app.controller('homeCtrl', [ '$scope', function ($scope){
-        $scope.pageHeader = "Suitmedia <br>Front-end Styleguides"
-    }])
-
-    app.controller('cssCtrl', [ '$scope', function ($scope){
-        $scope.pageHeader = "Suitmedia <br>CSS Styleguides"
-    }])
-
-    app.controller('htmlCtrl', [ '$scope', function ($scope){
-        $scope.pageHeader = "Suitmedia <br>HTML Styleguides"
-    }])
-
-    app.controller('toolsCtrl', [ '$scope', function ($scope){
-        $scope.pageHeader = "Front-end Tools/Plugins"
-    }])
-
-    app.controller('jsCtrl', [ '$scope', function ($scope){
-        $scope.pageHeader = "Suitmedia <br>Javascript Styleguides"
-    }])
-
-    app.config(function($routeProvider) {
-        $routeProvider
-        .when("/", {
-            templateUrl: 'home.html',
-            controller: 'homeCtrl'
-        })
-        .when("/css", {
-            templateUrl: 'css.html',
-            controller: 'cssCtrl'
-        })
-        .when("/html", {
-            templateUrl: "html.html",
-            controller: 'htmlCtrl'
-        })
-        .when("/tools", {
-            templateUrl: "tools.html",
-            controller: 'toolsCtrl'
-        })
-        .when("/js", {
-            templateUrl: "js.html",
-            controller: 'jsCtrl'
-        })
-    })
 
 })(window, document)
