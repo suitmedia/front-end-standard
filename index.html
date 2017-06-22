@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" ng-app="myApp">
+<html class="no-js" lang="en" ng-app="App">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -30,29 +30,43 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <script src="assets/js/vendor/modernizr.min.js"></script>
 </head>
-<body>
+<body ng-controller="mainCtrl">
     <!--[if lt IE 9]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ng-controller="mainCtrl">
-        <header class="main-header">
-            <div class="container">
-                <h1 class="page-title" ng-bind-html="$route.current.scope.pageHeader"></h1>
+    <header class="header">
+        <div class="container">
+            <img class="logo" src="assets/img/logo.png">
+            <div class="header-title--container">
+                <h2 class="header-title">front-end styleguides</h1>
+                <h1 class="header-title --sub">{{ $route.current.scope.pageHeader }}</h1>
             </div>
-        </header>
-        
-        <ng-view></ng-view>
-    </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-background"></div>
+        <div class="container">
+            <div class="box">
+                <a class="back-button" href="#!" ng-show="$route.current.scope.isSection">
+                    <i class="fa fa-angle-left fa-2x"></i>
+                    <i class="fa fa-angle-left fa-2x" style="margin-left: 30px"></i>
+                </a>
+                <div class="container">
+                    <ng-view></ng-view>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <script>window.myPrefix = '';</script>
-    <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,promise,fetch"></script>
     <script src="assets/js/vendor/jquery.min.js"></script>
+    <script src="assets/js/vendor/highlight.min.js"></script>
     <script src="assets/js/vendor/angular.min.js"></script>
     <script src="assets/js/vendor/angular-route.min.js"></script>
-    <script src="assets/js/vendor/angular-sanitize.min.js"></script>
-    <script src="assets/js/vendor/highlight.min.js"></script>
     <script src="assets/js/vendor/angular-highlightjs.min.js"></script>
+    <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,promise,fetch"></script>
     <script src="assets/js/main.min.js"></script>
 </body>
 </html>

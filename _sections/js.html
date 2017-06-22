@@ -1,0 +1,391 @@
+            <section class="section">
+                <h2>Code structure</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5">
+                        <p>Suitmedia menggunakan object literal sebagai struktur kode yang di mana dibungkus ke dalam sebuah IIFE (Immediately-invoked function expression).</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7">
+<pre><code class="javascript" hljs>;(function ( window, document, undefined ) {
+    var Site = {
+        
+        init: function () {
+            this.feature1();
+        },
+
+        feature1: function () {
+
+        }
+    };
+
+    Site.init();
+})( window, document );
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Gunakan literal expression</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Untuk membuat sebuah object maupun array, gunakan literal expression syntax.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="javascript" hljs>// bad
+var obj = new Object();
+var list = new Array();
+
+// good
+var obj = {};
+var list = [];
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Prefix '$'</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Prefix jQuery object menggunakan karakter '$' untuk membedakan antara jQuery Object dengan DOM Element</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="javascript" hljs>// Not good
+var btnSubmit = $('#btnSubmit');
+var btnCancel = document.querySelector('#btnCancel');
+
+// Much better
+var $btnSubmit = $('#btnSubmit');
+var btnCancel  = document.querySelector('#btnCancel');
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Cache selector dan string.</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Tujuan dari cache selector ini adalah agar browser tidak perlu melakukan operasi yang sama berulang-ulang.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="javascript" hljs>// bad
+if ( $('.wrapper').hasClass('active') ) {
+    $('.wrapper').removeClass('active');
+} else {
+    $('.wrapper').addClass('active');
+}
+
+// good
+var $wrapper    = $('.wrapper'),
+    active      = 'foo';
+
+if ( $wrapper.hasClass( active ) ) {
+    $wrapper.addClass( active );
+} else {
+    $wrapper.removeClass( active );
+}
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Simpan string yang dibutuhkan dalam Object</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Ada case di mana kita harus mengecek apakah sebuah element mempunyai nama class atau tidak. Dan terkadang kita harus mengecek apakah sebuah element memiliki class-class yang ada.</p>
+                        <p>Untuk mempermudah, string class dapat disimpan ke dalam object litaral.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7">
+<pre><code class="javascript" hljs>// ok
+var classActive = 'is-active',
+    classIdle   = 'is-idle',
+    classLabel  = 'label';
+
+var checkElement = function ( elem ) {
+    if ( !elem.hasClass( classLabel ) ) return;
+
+    if ( elem.hasClass( classActive ) ) {
+        elem.removeClass( classActive );
+        elem.addClass( classIdle );
+    }
+};
+
+// better
+var classes = {
+    active: 'is-active',
+    idle  : 'is-idle',
+    label : 'label'  
+};
+
+var checkElement = function ( elem ) {
+    if ( !elem.hasClass( classes.label ) ) return;
+
+    if ( elem.hasClass( classes.active ) ) {
+        elem.removeClass( classes.active );
+        elem.addClass( classes.idle );
+    }
+};
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Gunakan strict equality ( === )</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Strict equality tidak hanya membandingkan value, namun juga membandingkan tipe value. Menggunakan lenient equality ( == ) hanya membanding value, namun tidak validasi tipe value.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7">
+<pre><code class="javascript" hljs>// Lenient equality
+var a = '1', // string
+    b = 1;   // number
+
+console.log( a == b ); // true
+
+// Strict equality
+var a = '1', // string
+    b = 1;   // number
+
+console.log( a === b ); // false
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Gunakan function expression</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Dalam deklarasi sebuah function, gunakan function expression daripada function declaration.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="javascript" hljs>// bad
+function move() {
+    // code
+}
+
+// good
+var move = function () {
+    // code  
+};
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5">
+                        <p>Format deklarasi function expression dapat dilihat di samping. Spasi sebelum dan sesudah buka tutup kurung, dan jangan lupa tambahkan titik koma setelah tutup kurung kurawal.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7">
+<pre><code class="javascript" hljs>var move = function () {
+    // ...
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Hindari anonymous function</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Buatlah sebuah function dan attach function tersebut ke handler yang dibutuhkan.</p>
+                        <p>Anonymous function membuat code tidak reusable dan menambahkan penggalan code yang ter-indent.</p>
+                        <p>Dengan tidak membuat anonymous function juga menambah readability dan menjelaskan tujuan fungsi yang dijalankan.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="javascript" hljs>// bad
+btn.click( function (e) {
+    // Tidak tau apa yang terjadi apabila class 'bar' ditambahkan
+    foo.addClass('bar');
+    e.preventDefault();
+});
+
+// good
+var openMenu = function (e) {
+    foo.addClass('bar');  
+    e.preventDefault();
+};
+
+btn.click( openMenu );
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>unbind event handler sebelum menambahkan event handler.</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Hal ini untuk menghindari sebuah event di trigger 2 kali apabila sebuah function dipanggil kembali.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="javascript" hljs>var openMenu = function () {
+    // Scary code goes here...
+};
+
+btn.off('click', openMenu);
+btn.click( openMenu );
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Return early</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Return early apabila element yang akan dipakai tidak ada. Tujuannya adalah:</p>
+
+                        <ul>
+                            <li>Body code akan tetap berada di level paling luar</li>
+                            <li>Mengurangi 1 indented/nested code</li>
+                        </ul>
+
+                        <p>Perlu diperhatikan bahwa cara pengecekan sebuah element ada atau tidak, berbeda antara element dan nodelist/jQuery Objet.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="javascript" hljs>// bad
+(function () {
+    var $btn = $('button');
+
+    if ( btn.length ) {
+        btn.click( openMenu );
+    }
+})();
+
+// good
+(function () {
+    var $btn = $('button');
+
+    if ( !$btn.length ) return;
+
+    $btn.click( openMenu );
+})();
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5">
+                        <h4>Element</h4>
+                        <p>Apabila hanya return 1 element saja seperti:</p>
+
+                        <ul>
+                            <li>getElementById();</li>
+                            <li>querySelector();</li>
+                        </ul>
+                    </div>
+                    <div class="bzg_c" data-col="l7">
+<pre><code class="javascript" hljs>// Element
+var el = document.querySelector('.elem');
+
+if ( !el ) return;
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5">
+                        <h4>NodeList/jQuery Object</h4>
+                        <p>deklarasi di bawah akan me-return nodeList/jQuery Object:</p>
+
+                        <ul>
+                            <li>querySelectorAll()</li>
+                            <li>$()</li>
+                        </ul>
+                    </div>
+                    <div class="bzg_c" data-col="l7">
+<pre><code class="javascript" hljs>// Nodelist
+var elems = document.querySelectorAll('.elems');
+
+if ( !elems.length ) return;
+
+//  jQuery Object
+var $elems = $('.elems');
+
+if ( !$elems.length ) return;
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Convert String to Int</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Untuk convert string ke int, gunakan Math.floor daripada parseInt karena Math.floor lebih baik dari segi performance.</p>
+                        <p><a href="http://jsperf.com/math-floor-vs-math-round-vs-parseint/148">Reference</a></p>
+                    </div>
+                    <div class="bzg_c" data-col="l7">
+<pre><code class="javascript" hljs>var value = '1000';
+console.log(typeof value); // String
+
+var newValue = Math.floor(value);
+console.log(typeof newValue); // Number
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Loop</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Untuk iterasi element, gunakan <code>for</code> daripada jQuery <code>each</code> karena <code>for</code> lebih cepat dari segi performance.</p>
+                        <p><a href="http://jsperf.com/jquery-each-vs-for-loop/39">Reference</a></p>
+                    </div>
+                    <div class="bzg_c" data-col="l7">
+<pre><code class="javascript" hljs>// slow
+var $elems = $('.elem');
+
+$elems.each( function (i, el) {
+    var $this = $(this);
+    console.log($this);
+});
+
+// fast
+var $elems = $('.elem');
+
+for ( var i = 0, j = $elems.length; i &lt; j; i++ ) {
+    var curr = $elems.eq(i);
+    console.log(curr);
+}
+</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Console.*</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Apabila sudah siap untuk production, hapus semua deklarasi <code>console.*</code> karena akan menimbulkan error di IE8.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>JSHint</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Sebelum di push ke repo, file Javascript harus divalidasi terlebih dahulu menggunakan JSHint dan pastikan tidak ada error. <a href="https://github.com/uipoet/sublime-jshint">JSHint Sublime Text plugin</a>.</p>
+                    </div>
+                </div>
+            </section>

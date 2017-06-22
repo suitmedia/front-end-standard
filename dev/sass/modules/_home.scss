@@ -1,0 +1,111 @@
+.home-quote {
+	position: relative;
+	margin: 0;
+	font-size: 1.3em;
+	text-align: center;
+
+	&:after {
+		position: absolute;
+		bottom: -24px;
+		left: 50%;
+		width: 56px;
+		height: 1px;
+		background: $orange;
+		transform: translateX(-50%);
+		content: '';
+	}
+
+	q {
+		display: inline-block;
+		margin-bottom: 20px;
+		max-width: 600px;
+		line-height: 1.45em;
+		font-style: italic;
+		font-weight: 300;
+	}
+
+	a {
+		position: relative;
+		display: inline-block;
+		font-style: normal;
+		color: currentcolor;
+		transform: translateX(0);
+		
+		&:before {
+			position: absolute;
+			top: 2px;
+			left: -10px;
+			content: '\f099';
+			font-family: 'FontAwesome';
+			opacity: 0;
+			transform: translateX(0);
+			transition: opacity 0.2s ease, transform 0.2s ease;
+		}
+
+		&:hover {
+			transform: translateX(10px);
+
+			&:before {
+				opacity: 1;
+				transform: translateX(-12px);
+				transition: opacity 0.2s ease, transform 0.2s ease;
+			}
+		}
+	}
+}
+
+.home-links {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 0 12%;
+	margin-top: 80px;
+}
+
+.home-links--item {
+	display: inline-block;
+	margin-bottom: 20px;
+	min-width: 300px;
+	line-height: 56px;
+	font-size: 1.5em;
+	font-weight: 700;
+}
+
+.home-links--icon {
+	display: inline-block;
+	width: 56px;
+	height: 56px;
+	margin-right: 12px;
+	border-radius: 100px;
+	background: $black;
+	text-align: center;
+	color: $white;
+	transition: all 0.4s ease;
+
+	.home-links--item:hover & {
+		background: $orange;
+		transform: rotate(1turn);
+	}
+}
+
+.home-links--name {
+	position: relative;
+	display: inline-block;
+
+	&:after {
+		position: absolute;
+		bottom: 5px;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		background: $orange;
+		content: '';
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: all 0.4s ease;
+
+		.home-links--item:hover & {
+			transform: scaleX(1);
+		}
+	}
+}

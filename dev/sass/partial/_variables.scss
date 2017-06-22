@@ -2,9 +2,9 @@
 // Typography
 // ------------------------------------------------------------------------ //
 
-$base_font_size     : 16px;
+$base_font_size     : 15px;
 $base_line_height   : 1.6em;
-$base_font_family   : sans-serif;
+$base_font_family   : 'Segoe UI', sans-serif;
 $space              : $base_line_height;
 
 
@@ -12,7 +12,11 @@ $space              : $base_line_height;
 // Colors
 // ------------------------------------------------------------------------ //
 
-$black              : #222;
+$orange				: #ff6700;
+$grey				: #EBEBEB;
+$white				: #fff;
+
+$black              : #282828;
 $black90            : lighten($black, 10%);
 $black80            : lighten($black, 20%);
 $black70            : lighten($black, 30%);
@@ -23,10 +27,10 @@ $black30            : lighten($black, 70%);
 $black20            : lighten($black, 80%);
 $black10            : lighten($black, 90%);
 
-$link               : #0094ed;
-$link_hover         : darken($link, 10%);
+$link               : inherit;
+$link_hover         : $orange;
 
-$selection_bg       : #b3d4fc;
+$selection_bg       : lighten($orange, 10%);
 $selection_color    : $black;
 
 

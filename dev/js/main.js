@@ -11,8 +11,6 @@
         _objectFit      : `${path.js}object-fit-images.min.js`
     }
 
-    const isActive = 'is-active'
-
     const Site = {
         enableActiveStateMobile() {
             if ( document.addEventListener ) {
@@ -37,55 +35,60 @@
         },
 
         angularModule() {
-            const app = angular.module('myApp', ['ngRoute', 'ngSanitize', 'hljs'])
+            const app = angular.module('App', ['ngRoute', 'hljs'])
 
-            app.controller('mainCtrl', ($scope, $route) => {
+            app.controller('mainCtrl', ['$scope', '$route', ($scope, $route) => {
                 $scope.$route = $route;
-            })
+            }])
 
-            app.controller('homeCtrl', ($scope) => {
-                $scope.pageHeader = 'Suitmedia <br>Front-end Styleguides'
-            })
+            app.controller('homeCtrl', ['$scope', $scope => {
+                $scope.pageHeader = ''
+                $scope.isSection = 0
+            }])
 
-            app.controller('cssCtrl', ($scope) => {
-                $scope.pageHeader = 'Suitmedia <br>CSS Styleguides'
-            })
+            app.controller('cssCtrl', ['$scope', $scope => {
+                $scope.pageHeader = 'CSS/SASS'
+                $scope.isSection = 1
+            }])
 
-            app.controller('htmlCtrl', ($scope) => {
-                $scope.pageHeader = 'Suitmedia <br>HTML Styleguides'
-            })
+            app.controller('htmlCtrl', ['$scope', $scope => {
+                $scope.pageHeader = 'HTML'
+                $scope.isSection = 1
+            }])
 
-            app.controller('toolsCtrl', ($scope) => {
-                $scope.pageHeader = 'Front-end Tools/Plugins'
-            })
+            app.controller('toolsCtrl', ['$scope', $scope => {
+                $scope.pageHeader = 'Tools & Plugins'
+                $scope.isSection = 1
+            }])
 
-            app.controller('jsCtrl', ($scope) => {
-                $scope.pageHeader = 'Suitmedia <br>Javascript Styleguides'
-            })
+            app.controller('jsCtrl', ['$scope', $scope => {
+                $scope.pageHeader = 'Javascript'
+                $scope.isSection = 1
+            }])
 
-            app.config( $routeProvider => {
+            app.config( ['$routeProvider', $routeProvider => {
                 $routeProvider
                 .when('/', {
-                    templateUrl: 'home.html',
+                    templateUrl: '_sections/home.html',
                     controller: 'homeCtrl'
                 })
                 .when('/css', {
-                    templateUrl: 'css.html',
+                    templateUrl: '_sections/css.html',
                     controller: 'cssCtrl'
                 })
                 .when('/html', {
-                    templateUrl: 'html.html',
+                    templateUrl: '_sections/html.html',
                     controller: 'htmlCtrl'
                 })
                 .when('/tools', {
-                    templateUrl: 'tools.html',
+                    templateUrl: '_sections/tools.html',
                     controller: 'toolsCtrl'
                 })
                 .when('/js', {
-                    templateUrl: 'js.html',
+                    templateUrl: '_sections/js.html',
                     controller: 'jsCtrl'
                 })
-            })
+            }])
         }
     }
 
