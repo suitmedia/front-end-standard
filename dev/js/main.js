@@ -69,23 +69,23 @@
             app.config( ['$routeProvider', $routeProvider => {
                 $routeProvider
                 .when('/', {
-                    templateUrl: '_sections/home.html',
+                    templateUrl: 'home.html',
                     controller: 'homeCtrl'
                 })
                 .when('/css', {
-                    templateUrl: '_sections/css.html',
+                    templateUrl: 'css.html',
                     controller: 'cssCtrl'
                 })
                 .when('/html', {
-                    templateUrl: '_sections/html.html',
+                    templateUrl: 'html.html',
                     controller: 'htmlCtrl'
                 })
                 .when('/tools', {
-                    templateUrl: '_sections/tools.html',
+                    templateUrl: 'tools.html',
                     controller: 'toolsCtrl'
                 })
                 .when('/js', {
-                    templateUrl: '_sections/js.html',
+                    templateUrl: 'js.html',
                     controller: 'jsCtrl'
                 })
             }])
