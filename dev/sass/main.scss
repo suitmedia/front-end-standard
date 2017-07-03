@@ -25,8 +25,12 @@
 // ------------------------------------------------------------------------ //
 
 html {
-    font: 400 $base_font_size $base_font_family;
+    font: 400 $base_font_size_mobi $base_font_family;
     line-height: $base_line_height;
+
+    @media #{$large} {
+        font-size: $base_font_size;
+    }
 }
 
 body {

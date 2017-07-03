@@ -47,13 +47,9 @@ code {
 
 .section {
     margin-bottom: 56px;
-    padding-bottom: 56px;
-    border-bottom: solid 1px $black30;
-
+    
     &:last-child {
         margin-bottom: 0;
-        padding-bottom: 0;
-        border-bottom: none;
     }
 
     h2 {
