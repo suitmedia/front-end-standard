@@ -30,8 +30,8 @@ $black10            : lighten($black, 90%);
 $link               : inherit;
 $link_hover         : $orange;
 
-$selection_bg       : lighten($orange, 10%);
-$selection_color    : $black;
+$selection_bg       : darken($orange, 5%);
+$selection_color    : $white;
 
 
 

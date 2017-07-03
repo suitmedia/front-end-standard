@@ -57,34 +57,46 @@
 .home-links {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
 	margin: 0 12%;
 	margin-top: 80px;
+	justify-content: center;
+
+	@media #{$large} {
+		justify-content: space-between;
+	}
 }
 
 .home-links--item {
 	display: inline-block;
 	margin-bottom: 20px;
-	min-width: 300px;
+	min-width: 280px;
 	line-height: 56px;
 	font-size: 1.5em;
 	font-weight: 700;
+	white-space: nowrap;
+	
+	@media #{$large} {
+		min-width: 300px;
+	}
 }
 
 .home-links--icon {
 	display: inline-block;
 	width: 56px;
 	height: 56px;
-	margin-right: 12px;
+	margin-right: 4px;
 	border-radius: 100px;
 	background: $black;
 	text-align: center;
 	color: $white;
-	transition: all 0.4s ease;
+	transition: all 0.2s ease;
 
 	.home-links--item:hover & {
 		background: $orange;
-		transform: rotate(1turn);
+	}
+	
+	@media #{$large} {
+		margin-right: 12px;
 	}
 }
 

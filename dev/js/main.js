@@ -4,8 +4,7 @@
 
     const path = {
         css: `${myPrefix}assets/css/`,
-        js : `${myPrefix}assets/js/vendor/`,
-        basePath : `./`
+        js : `${myPrefix}assets/js/vendor/`
     }
 
     const assets = {
@@ -38,9 +37,9 @@
         angularModule() {
             const app = angular.module('App', ['ngRoute', 'hljs'])
 
-            app.controller('mainCtrl', ['$scope', '$route', '$http', ($scope, $route, $http) => {
-                $scope.$route = $route;
-                $scope.module = JSON.parse(moduleData)
+            app.controller('mainCtrl', ['$scope', '$route', ($scope, $route) => {
+                $scope.$route = $route
+                $scope.module = moduleData
             }])
 
             app.controller('homeCtrl', ['$scope', $scope => {
