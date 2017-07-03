@@ -2,177 +2,177 @@
     "data" : [
         {
             "name": "CSS Declaration",
-            "url": "_module/css1.html",
+            "url": "module/css1.html",
             "section": 1
         },
         {
             "name": "Avoid deep nesting",
-            "url": "_module/css2.html",
+            "url": "module/css2.html",
             "section": 1
         },
         {
             "name": "Z-Index",
-            "url": "_module/css3.html",
+            "url": "module/css3.html",
             "section": 1
         },
         {
             "name": "Spacing and new lines",
-            "url": "_module/css4.html",
+            "url": "module/css4.html",
             "section": 1
         },
         {
             "name": "CSS Prefixing",
-            "url": "_module/css5.html",
+            "url": "module/css5.html",
             "section": 1
         },
         {
             "name": "No ID and !important in CSS",
-            "url": "_module/css6.html",
+            "url": "module/css6.html",
             "section": 1
         },
         {
             "name": "Avoid contextual styles",
-            "url": "_module/css7.html",
+            "url": "module/css7.html",
             "section": 1
         },
         {
             "name": "Don't change base style",
-            "url": "_module/css8.html",
+            "url": "module/css8.html",
             "section": 1
         },
         {
             "name": "Use class to style, avoid using tag.",
-            "url": "_module/css9.html",
+            "url": "module/css9.html",
             "section": 1
         },
         {
             "name": "Don't use BEM SCSS shortcut",
-            "url": "_module/css10.html",
+            "url": "module/css10.html",
             "section": 1
         },
         {
             "name": "Don't use CSS @import",
-            "url": "_module/css11.html",
+            "url": "module/css11.html",
             "section": 1
         },
         {
             "name": "Use transform and opacity for high performance animation",
-            "url": "_module/css12.html",
+            "url": "module/css12.html",
             "section": 1
         },
         {
             "name": "Standard HTML Declaration",
-            "url": "_module/html1.html",
+            "url": "module/html1.html",
             "section": 2
         },
         {
             "name": "Penamaan class dan ID",
-            "url": "_module/html2.html",
+            "url": "module/html2.html",
             "section": 2
         },
         {
             "name": "Class naming convention",
-            "url": "_module/html3.html",
+            "url": "module/html3.html",
             "section": 2
         },
         {
             "name": "Penggunaan tag <a> dan <button>",
-            "url": "_module/html4.html",
+            "url": "module/html4.html",
             "section": 2
         },
         {
             "name": "Slick Carousel",
-            "url": "_module/tools1.html",
+            "url": "module/tools1.html",
             "section": 3
         },
         {
             "name": "Perfect Tooltip",
-            "url": "_module/tools2.html",
+            "url": "module/tools2.html",
             "section": 3
         },
         {
             "name": "Baguette Box",
-            "url": "_module/tools3.html",
+            "url": "module/tools3.html",
             "section": 3
         },
         {
             "name": "Baze Modal",
-            "url": "_module/tools4.html",
+            "url": "module/tools4.html",
             "section": 3
         },
         {
             "name": "Baze Validation",
-            "url": "_module/tools5.html",
+            "url": "module/tools5.html",
             "section": 3
         },
         {
             "name": "Code structure",
-            "url": "_module/js1.html",
+            "url": "module/js1.html",
             "section": 4
         },
         {
             "name": "Gunakan literal expression",
-            "url": "_module/js2.html",
+            "url": "module/js2.html",
             "section": 4
         },
         {
             "name": "Prefix '$'",
-            "url": "_module/js3.html",
+            "url": "module/js3.html",
             "section": 4
         },
         {
             "name": "Cache selector dan string.",
-            "url": "_module/js4.html",
+            "url": "module/js4.html",
             "section": 4
         },
         {
             "name": "Simpan string yang dibutuhkan dalam Object",
-            "url": "_module/js5.html",
+            "url": "module/js5.html",
             "section": 4
         },
         {
             "name": "Gunakan strict equality ( === )",
-            "url": "_module/js6.html",
+            "url": "module/js6.html",
             "section": 4
         },
         {
             "name": "Gunakan function expression",
-            "url": "_module/js7.html",
+            "url": "module/js7.html",
             "section": 4
         },
         {
             "name": "Hindari anonymous function",
-            "url": "_module/js8.html",
+            "url": "module/js8.html",
             "section": 4
         },
         {
             "name": "Unbind event handler sebelum menambahkan event handler.",
-            "url": "_module/js9.html",
+            "url": "module/js9.html",
             "section": 4
         },
         {
             "name": "Return early",
-            "url": "_module/js10.html",
+            "url": "module/js10.html",
             "section": 4
         },
         {
             "name": "Convert String to Int",
-            "url": "_module/js11.html",
+            "url": "module/js11.html",
             "section": 4
         },
         {
             "name": "Loop",
-            "url": "_module/js12.html",
+            "url": "module/js12.html",
             "section": 4
         },
         {
             "name": "Console.*",
-            "url": "_module/js13.html",
+            "url": "module/js13.html",
             "section": 4
         },
         {
             "name": "JSHint",
-            "url": "_module/js14.html",
+            "url": "module/js14.html",
             "section": 4
         }
     ]

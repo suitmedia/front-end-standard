@@ -5,7 +5,7 @@
     const path = {
         css: `${myPrefix}assets/css/`,
         js : `${myPrefix}assets/js/vendor/`,
-        basePath : `https://ersaldyraisha.github.io/suitmedia-styleguide/`
+        basePath : `./`
     }
 
     const assets = {
@@ -42,8 +42,18 @@
                 $scope.$route = $route;
                 $scope.module = []
 
-                $http.get('_module/modulelist.json').then( response => { 
-                    $scope.module = response.data.data
+                $http.get('module/modulelist.json').then( response => { 
+                    $scope.module = response.data.data.map( obj => {
+                        let moduleItem = {}
+                        
+                        moduleItem['name'] = obj.name
+                        moduleItem['url'] = path.basePath + obj.url
+                        moduleItem['section'] = obj.section
+
+                        return moduleItem;
+                    })
+
+                    console.log($scope.module)
                 }, e => {
                     // when error occured
                 })
@@ -80,7 +90,7 @@
                     scope: {
                         data: '=ngModel'
                     },
-                    template: `<div ng-include="${path.basePath}data.url"></div>`
+                    template: `<div ng-include="data.url"></div>`
                 }
             })
 
