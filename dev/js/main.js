@@ -5,7 +5,7 @@
     const path = {
         css: `${myPrefix}assets/css/`,
         js : `${myPrefix}assets/js/vendor/`,
-        basePath : ``
+        basePath : `https://ersaldyraisha.github.io/suitmedia-styleguide/`
     }
 
     const assets = {
