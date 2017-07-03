@@ -1,5 +1,4 @@
-{
-    "data" : [
+var moduleData = `[
         {
             "name": "CSS Declaration",
             "url": "module/css1.html",
@@ -175,5 +174,4 @@
             "url": "module/js14.html",
             "section": 4
         }
-    ]
-}
+    ]`

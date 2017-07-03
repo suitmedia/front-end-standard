@@ -40,23 +40,7 @@
 
             app.controller('mainCtrl', ['$scope', '$route', '$http', ($scope, $route, $http) => {
                 $scope.$route = $route;
-                $scope.module = []
-
-                $http.get('module/modulelist.json').then( response => { 
-                    $scope.module = response.data.data.map( obj => {
-                        let moduleItem = {}
-                        
-                        moduleItem['name'] = obj.name
-                        moduleItem['url'] = path.basePath + obj.url
-                        moduleItem['section'] = obj.section
-
-                        return moduleItem;
-                    })
-
-                    console.log($scope.module)
-                }, e => {
-                    // when error occured
-                })
+                $scope.module = JSON.parse(moduleData)
             }])
 
             app.controller('homeCtrl', ['$scope', $scope => {
