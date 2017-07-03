@@ -1,0 +1,76 @@
+                <h2>CSS Declaration</h2>
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Urutan deklarasi properti CSS adalah:</p>
+                        <ol>
+                            <li>Mixin</li>
+                            <li>Position</li>
+                            <li>Box model</li>
+                            <li>Type</li>
+                            <li>Visual</li>
+                            <li>Misc</li>
+                            <li>Pseudo element</li>
+                            <li>Pseudo class</li>
+                            <li>Media Queries</li>
+                        </ol>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="scss" hljs hljs-escape>selector {
+    @include thing1;
+    @include thing2;
+    
+    // Position
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    
+    // Box model
+    display: block;
+    width: 100px;
+    height: 100px;
+    padding: 1em;
+    border: solid 1px #222;
+    margin: 0 auto;
+
+    // Type
+    font: 400 16px sans-serif;
+    line-height: 1.6em;
+    text-transform: uppercase;
+    color: #222;
+
+    // Visual
+    background: #eee;
+    box-shadow: inset 0 0 2px #555;
+    cursor: auto;
+    opacity: 1;
+    transform: scale(1);
+
+    // Misc
+    transition: all .3s ease;
+
+    // Pseudo element
+    &:before,
+    &:after {
+        ...
+    }
+
+    // Pseudo class
+    &:first-child {
+        ...
+    }
+
+    &:hover {
+        ...
+    }
+
+    // Media Queries
+    @media ... {
+        ...
+    }
+}
+</code></pre>
+                    </div>
+                </div>

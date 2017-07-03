@@ -1,0 +1,26 @@
+<h2>Loop</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Untuk iterasi element, gunakan <code>for</code> daripada jQuery <code>each</code> karena <code>for</code> lebih cepat dari segi performance.</p>
+                        <p><a href="http://jsperf.com/jquery-each-vs-for-loop/39">Reference</a></p>
+                    </div>
+                    <div class="bzg_c" data-col="l7">
+<pre><code class="javascript" hljs>// slow
+var $elems = $('.elem');
+
+$elems.each( function (i, el) {
+    var $this = $(this);
+    console.log($this);
+});
+
+// fast
+var $elems = $('.elem');
+
+for ( var i = 0, j = $elems.length; i &lt; j; i++ ) {
+    var curr = $elems.eq(i);
+    console.log(curr);
+}
+</code></pre>
+                    </div>
+                </div>

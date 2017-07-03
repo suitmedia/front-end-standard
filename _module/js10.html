@@ -1,0 +1,77 @@
+<h2>Return early</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Return early apabila element yang akan dipakai tidak ada. Tujuannya adalah:</p>
+
+                        <ul>
+                            <li>Body code akan tetap berada di level paling luar</li>
+                            <li>Mengurangi 1 indented/nested code</li>
+                        </ul>
+
+                        <p>Perlu diperhatikan bahwa cara pengecekan sebuah element ada atau tidak, berbeda antara element dan nodelist/jQuery Objet.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="javascript" hljs>// bad
+(function () {
+    var $btn = $('button');
+
+    if ( btn.length ) {
+        btn.click( openMenu );
+    }
+})();
+
+// good
+(function () {
+    var $btn = $('button');
+
+    if ( !$btn.length ) return;
+
+    $btn.click( openMenu );
+})();
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5">
+                        <h4>Element</h4>
+                        <p>Apabila hanya return 1 element saja seperti:</p>
+
+                        <ul>
+                            <li>getElementById();</li>
+                            <li>querySelector();</li>
+                        </ul>
+                    </div>
+                    <div class="bzg_c" data-col="l7">
+<pre><code class="javascript" hljs>// Element
+var el = document.querySelector('.elem');
+
+if ( !el ) return;
+</code></pre>
+                    </div>
+                </div>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5">
+                        <h4>NodeList/jQuery Object</h4>
+                        <p>deklarasi di bawah akan me-return nodeList/jQuery Object:</p>
+
+                        <ul>
+                            <li>querySelectorAll()</li>
+                            <li>$()</li>
+                        </ul>
+                    </div>
+                    <div class="bzg_c" data-col="l7">
+<pre><code class="javascript" hljs>// Nodelist
+var elems = document.querySelectorAll('.elems');
+
+if ( !elems.length ) return;
+
+//  jQuery Object
+var $elems = $('.elems');
+
+if ( !$elems.length ) return;
+</code></pre>
+                    </div>
+                </div>

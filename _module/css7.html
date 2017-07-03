@@ -1,0 +1,33 @@
+<h2>Avoid contextual styles</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Intinya jangan buat style yang medeskripsikan untuk apa atau untuk siapa style itu ditujukan.</p>
+                        <p>Styles harus dibuat se-abstract mungkin agar dapat dipakai berkali-kali dan dapat dipakai untuk segala konteks.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="css" hljs>/* NO! */
+.btn-download {
+    prop: value;
+}
+
+/* YES! */
+.btn-primary {
+    prop: value;
+}
+
+/* NO! */
+.faq-wrapper {
+    width: 400px;
+}
+
+/* YES! */
+.container {
+    width: 800px;
+}
+
+.container--small {
+    width: 400px;
+}</code></pre>
+                    </div>
+                </div>

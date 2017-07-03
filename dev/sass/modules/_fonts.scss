@@ -1,6 +1,7 @@
 @font-face {
   	font-family: 'Segoe UI';
-  	src: url('../fonts/segoe-l.woff') format('woff'),
+  	src: local('Segoe UI Light'), 
+        url('../fonts/segoe-l.woff') format('woff'),
        	url('../fonts/segoe-l.ttf')  format('truetype');
        
   	font-style: normal;
@@ -9,7 +10,8 @@
 
 @font-face {
   	font-family: 'Segoe UI';
-  	src: url('../fonts/segoe-li.woff') format('woff'),
+  	src: local('Segoe UI Light Italic'), 
+        url('../fonts/segoe-li.woff') format('woff'),
        	url('../fonts/segoe-li.ttf')  format('truetype');
        
   	font-style: italic;
@@ -18,7 +20,8 @@
 
 @font-face {
   	font-family: 'Segoe UI';
-  	src: url('../fonts/segoe-r.woff') format('woff'),
+  	src: local('Segoe UI'), 
+        url('../fonts/segoe-r.woff') format('woff'),
        	url('../fonts/segoe-r.ttf')  format('truetype');
        
   	font-style: normal;
@@ -27,7 +30,8 @@
 
 @font-face {
   	font-family: 'Segoe UI';
-  	src: url('../fonts/segoe-ri.woff') format('woff'),
+  	src: local('Segoe UI Italic'), 
+        url('../fonts/segoe-ri.woff') format('woff'),
        	url('../fonts/segoe-ri.ttf')  format('truetype');
        
   	font-style: italic;
@@ -36,7 +40,8 @@
 
 @font-face {
   	font-family: 'Segoe UI';
-  	src: url('../fonts/segoe-b.woff') format('woff'),
+  	src: local('Segoe UI Bold'), 
+        url('../fonts/segoe-b.woff') format('woff'),
        	url('../fonts/segoe-b.ttf')  format('truetype');
        
   	font-style: normal;
@@ -45,7 +50,8 @@
 
 @font-face {
   	font-family: 'Segoe UI';
-  	src: url('../fonts/segoe-bi.woff') format('woff'),
+  	src: local('Segoe UI Bold Italic'), 
+        url('../fonts/segoe-bi.woff') format('woff'),
        	url('../fonts/segoe-bi.ttf')  format('truetype');
        
   	font-style: italic;

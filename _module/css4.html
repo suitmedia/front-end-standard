@@ -1,0 +1,46 @@
+<h2>Spacing and new lines</h2>
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Agar lebih mudah dibaca dan maintainable, tambahkan space dan new line secukupnya.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="scss" hljs hljs-escape>// Bad
+a{
+    prop: value;
+    &:hover,&:focus{
+        prop: value;
+    }
+    &:active{
+        prop: value;
+    }
+    span{
+        color: #999;
+    }
+}
+button{
+    ...
+}
+
+// Good
+a {
+    prop: value;
+
+    &:hover,
+    &:focus {
+        prop: value;
+    }
+
+    &:active {
+        prop: value;
+    }
+
+    span {
+        color: #999;
+    }
+}
+
+button {
+    ...
+}</code></pre>
+                    </div>
+                </div>

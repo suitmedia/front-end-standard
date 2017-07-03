@@ -1,0 +1,34 @@
+<h2>Don't use BEM SCSS shortcut</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Memang memudahkan jadi tidak perlu menulis berulang-ulang, namun itu membuat file .scss susah untuk di index/search dan akan merepotkan developer penerus.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="scss" hljs hljs-escape>/* NO! */
+.highlight {
+    ...
+
+    &__title {
+        ...
+    }
+
+    &__list {
+        ...
+    }
+}
+
+/* YES! */
+.highlight {
+    ...
+}
+
+.highlight__title {
+    ...
+}
+
+.highlight__list {
+    ...
+}</code></pre>
+                    </div>
+                </div>

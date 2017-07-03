@@ -1,0 +1,26 @@
+<h2>Hindari anonymous function</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Buatlah sebuah function dan attach function tersebut ke handler yang dibutuhkan.</p>
+                        <p>Anonymous function membuat code tidak reusable dan menambahkan penggalan code yang ter-indent.</p>
+                        <p>Dengan tidak membuat anonymous function juga menambah readability dan menjelaskan tujuan fungsi yang dijalankan.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="javascript" hljs>// bad
+btn.click( function (e) {
+    // Tidak tau apa yang terjadi apabila class 'bar' ditambahkan
+    foo.addClass('bar');
+    e.preventDefault();
+});
+
+// good
+var openMenu = function (e) {
+    foo.addClass('bar');  
+    e.preventDefault();
+};
+
+btn.click( openMenu );
+</code></pre>
+                    </div>
+                </div>

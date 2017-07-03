@@ -1,0 +1,40 @@
+    <h2>Standard HTML Declaration</h2>
+    
+    <div class="bzg">
+        <div class="bzg_c" data-col="l5" data-sticky>
+            <p>Aturan dalam deklarasi HTML</p>
+
+            <ul>
+                <li>Gunakan kutip 2, bukan kutip 1.</li>
+                <li>
+                    Urutan penempatan attribute:
+
+                    <ol>
+                        <li>Class</li>
+                        <li>ID</li>
+                        <li>Attribute bawaan (href, src)</li>
+                        <li>Attribute global</li>
+                        <li>Data attribute</li>
+                    </ol>
+                </li>
+                <li>Apabila deklarasi tag sudah terlalu panjang, diperbolehkan untuk menambahkan new line untuk tiap attribute.</li>
+            </ul>
+        </div>
+        <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="html" hljs hljs-no-escape>
+
+&lt;!-- Bad -->
+&lt;a data-attribute="link" href="..." id='link' class="link" title="my link">Link&lt;/a>
+
+&lt;!-- Good -->
+&lt;a class="link" id="link" href="..." title="my link" data-attribute="link">Link&lt;/a>
+
+&lt;a
+    class="link"
+    id="link"
+    href="..."
+    title="my link"
+    data-attribute="link">Link&lt;/a>
+</code></pre>
+        </div>
+    </div>

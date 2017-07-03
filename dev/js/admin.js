@@ -4,8 +4,7 @@
 
     const path = {
         css: `${myPrefix}assets/css/`,
-        js : `${myPrefix}assets/js/vendor/`,
-        basePath : ``
+        js : `${myPrefix}assets/js/vendor/`
     }
 
     const assets = {
@@ -38,51 +37,34 @@
         angularModule() {
             const app = angular.module('App', ['ngRoute', 'hljs'])
 
-            app.controller('mainCtrl', ['$scope', '$route', '$http', ($scope, $route, $http) => {
+            app.controller('mainCtrl', ['$scope', '$route', ($scope, $route) => {
                 $scope.$route = $route;
-                $scope.module = []
-
-                $http.get('_module/modulelist.json').then( response => { 
-                    $scope.module = response.data.data
-                }, e => {
-                    // when error occured
-                })
             }])
 
             app.controller('homeCtrl', ['$scope', $scope => {
                 $scope.pageHeader = ''
-                $scope.sectionNumber = 0
+                $scope.isSection = 0
             }])
 
             app.controller('cssCtrl', ['$scope', $scope => {
                 $scope.pageHeader = 'CSS/SASS'
-                $scope.sectionNumber = 1
+                $scope.isSection = 1
             }])
 
             app.controller('htmlCtrl', ['$scope', $scope => {
                 $scope.pageHeader = 'HTML'
-                $scope.sectionNumber = 2
+                $scope.isSection = 1
             }])
 
             app.controller('toolsCtrl', ['$scope', $scope => {
                 $scope.pageHeader = 'Tools & Plugins'
-                $scope.sectionNumber = 3
+                $scope.isSection = 1
             }])
 
             app.controller('jsCtrl', ['$scope', $scope => {
                 $scope.pageHeader = 'Javascript'
-                $scope.sectionNumber = 4
+                $scope.isSection = 1
             }])
-
-            app.directive('sectionLoader', () => {
-                return {
-                    restrict: 'A',
-                    scope: {
-                        data: '=ngModel'
-                    },
-                    template: `<div ng-include="${path.basePath}data.url"></div>`
-                }
-            })
 
             app.config( ['$routeProvider', $routeProvider => {
                 $routeProvider
@@ -91,19 +73,19 @@
                     controller: 'homeCtrl'
                 })
                 .when('/css', {
-                    templateUrl: 'page.html',
+                    templateUrl: 'css.html',
                     controller: 'cssCtrl'
                 })
                 .when('/html', {
-                    templateUrl: 'page.html',
+                    templateUrl: 'html.html',
                     controller: 'htmlCtrl'
                 })
                 .when('/tools', {
-                    templateUrl: 'page.html',
+                    templateUrl: 'tools.html',
                     controller: 'toolsCtrl'
                 })
                 .when('/js', {
-                    templateUrl: 'page.html',
+                    templateUrl: 'js.html',
                     controller: 'jsCtrl'
                 })
             }])

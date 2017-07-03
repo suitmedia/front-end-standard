@@ -1,0 +1,54 @@
+<h2>Don't change base style</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Jangan menambahkan/mengubah behavior style yang sudah dimiliki tiap element. Apabila ingin melakukan itu, gunakan class.</p>
+                        <p>Hal ini untuk mencegah hal yang tidak diinginkan apabila user meng-input content dari editor.</p>
+                        <p>Kalaupun memang ada style khusus untuk tiap-tiap element contoh untuk article, wrap dengan sebuah class lalu declare contextual style berdasarkan wrappernya.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="scss" hljs>// NO!
+h1 {
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+textarea {
+    min-height: 90px;
+    -webkit-appearance: none;
+}
+
+ul {
+    width: 400px;
+}
+
+// YES!
+.heading {
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+.field {
+    min-height: 90px;
+    -webkit-appearance: none;
+}
+
+.list {
+    width: 400px;
+}
+
+//Contextual Style
+.article {
+
+    h1 {
+        text-transform: uppercase;
+    }
+
+    p {
+        font-size: 13px;
+        font-weight: 300;
+    }
+
+}</code></pre>
+                    </div>
+                </div>

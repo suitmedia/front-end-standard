@@ -1,0 +1,16 @@
+<h2>Unbind event handler sebelum menambahkan event handler.</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Hal ini untuk menghindari sebuah event di trigger 2 kali apabila sebuah function dipanggil kembali.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="javascript" hljs>var openMenu = function () {
+    // Scary code goes here...
+};
+
+btn.off('click', openMenu);
+btn.click( openMenu );
+</code></pre>
+                    </div>
+                </div>

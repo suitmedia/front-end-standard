@@ -1,0 +1,37 @@
+<h2>Avoid deep nesting</h2>
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Maksimal nesting adalah 3 level, lebih dari itu hindari. Nesting level paling akhir apabila adalah Pseudo Class atau Pseudo Element diperbolehkan.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="scss" hljs>// Bad
+ul {
+    li {
+        a {
+            span {
+                ...
+            }
+        }
+    }
+}
+
+// Good
+ul {
+    li {
+        a {
+            ...
+        }
+    }
+}
+
+ul {
+    li {
+        a {
+            &:hover {
+                ...
+            }
+        }
+    }
+}</code></pre>        
+                    </div>
+                </div>

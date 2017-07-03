@@ -1,0 +1,26 @@
+<h2>Cache selector dan string.</h2>
+
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Tujuan dari cache selector ini adalah agar browser tidak perlu melakukan operasi yang sama berulang-ulang.</p>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="javascript" hljs>// bad
+if ( $('.wrapper').hasClass('active') ) {
+    $('.wrapper').removeClass('active');
+} else {
+    $('.wrapper').addClass('active');
+}
+
+// good
+var $wrapper    = $('.wrapper'),
+    active      = 'foo';
+
+if ( $wrapper.hasClass( active ) ) {
+    $wrapper.addClass( active );
+} else {
+    $wrapper.removeClass( active );
+}
+</code></pre>
+                    </div>
+                </div>

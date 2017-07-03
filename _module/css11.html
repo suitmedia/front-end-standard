@@ -1,0 +1,20 @@
+<h2>Don't use CSS @import</h2>
+                <div class="bzg">
+                    <div class="bzg_c" data-col="l5" data-sticky>
+                        <p>Alasan kenapa jangan menggunakan CSS <code>@import</code> adalah:</p>
+
+                        <ul>
+                            <li>File CSS yang dipanggil via @import tidak di cache di browser.</li>
+                            <li>File CSS yang dipanggil via @import tidak dapat didownload oleh browser secara paralel.</li>
+                            <li>Mengurangi performance web.</li>
+                        </ul>
+                    </div>
+                    <div class="bzg_c" data-col="l7" data-sticky>
+<pre><code class="scss" hljs>/* NO! */
+@import url('hello.css');</code></pre> &nbsp;
+                                
+<pre><code class="html" hljs hljs-no-escape>&lt;!-- YES! -->
+&lt;link rel="stylesheet" href="hello.css"&gt;
+&lt;!-- or use scss import --></code></pre>
+                    </div>
+                </div>
