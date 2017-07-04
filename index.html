@@ -42,7 +42,7 @@
             </a>
             <div class="header-title--container">
                 <h2 class="header-title">front-end styleguides</h1>
-                <h1 class="header-title --sub">{{ $route.current.scope.pageHeader }}</h1>
+                <h1 class="header-title --sub ng-cloak">{{ $route.current.scope.pageHeader }}</h1>
             </div>
         </div>
     </header>
@@ -65,8 +65,11 @@
     <script>window.myPrefix = '';</script>
     <script src="modulelist.js"></script>
     <script src="assets/js/vendor/highlight.min.js"></script>
+    <script src="assets/js/vendor/marked.min.js"></script>
     <script src="assets/js/vendor/angular.min.js"></script>
     <script src="assets/js/vendor/angular-route.min.js"></script>
+    <script src="assets/js/vendor/angular-sanitize.min.js"></script>
+    <script src="assets/js/vendor/angular-marked.min.js"></script>
     <script src="assets/js/vendor/angular-highlightjs.min.js"></script>
     <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,promise,fetch"></script>
     <script src="assets/js/main.min.js"></script>

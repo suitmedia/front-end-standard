@@ -1,12 +1,16 @@
-<h2>Use class to style, avoid using tag.</h2>
+## Use class to style, avoid using tag.
 
-                <div class="bzg">
-                    <div class="bzg_c" data-col="l5" data-sticky>
-                        <p>Sebisa mungkin hindari memberi style menggunakan tag element. Gunakan class agar style yang dibuat scalable dan lebih mudah di maintain.</p>
-                        <p>Selain itu apabila ke depannya markup diubah, artinya kita harus mengubah css kita juga. Dengan menggunakan class, walau markup berubah, tidak akan mempengaruhi style.</p>
-                    </div>
-                    <div class="bzg_c" data-col="l7" data-sticky>
-<pre><code class="css" hljs>/* NO! */
+<div class="bzg">
+<div class="bzg_c" data-col="l5" data-sticky>
+
+Sebisa mungkin hindari memberi style menggunakan tag element. Gunakan class agar style yang dibuat scalable dan lebih mudah di maintain.
+
+Selain itu apabila ke depannya markup diubah, artinya kita harus mengubah css kita juga. Dengan menggunakan class, walau markup berubah, tidak akan mempengaruhi style.
+
+</div>
+<div class="bzg_c" data-col="l7" data-sticky>
+```
+/* NO! */
 .highlight {
     float: left;
     width: 30%;
@@ -34,6 +38,7 @@
 
 .highlight-list {
     color: #444;
-}</code></pre>
-                    </div>
-                </div>
+}
+```
+</div>
+</div>

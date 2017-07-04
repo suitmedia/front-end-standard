@@ -80,6 +80,11 @@ var moduleData = [
             "section": 2
         },
         {
+            "name": "Label untuk tiap input",
+            "url": "module/html5.html",
+            "section": 2
+        },
+        {
             "name": "Slick Carousel",
             "url": "module/tools1.html",
             "section": 3

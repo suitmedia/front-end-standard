@@ -1,17 +1,20 @@
-<h2>Use transform and opacity for high performance animation</h2>
-                <div class="bzg">
-                    <div class="bzg_c" data-col="l5" data-sticky>
-                        <p>Untuk membuat animasi contoh pada saat image di hover, image membesar, jangan gunakan width dan height.</p>
-                        <p>Gunakan property <code>transform</code> agar dapat dirender menggunakan GPU, bukan CPU. Pada dasarnya, untuk mendapatkan high performance animation, gunakan:</p>
-                        <ul>
-                            <li>Translate</li>
-                            <li>Scale</li>
-                            <li>Rotate</li>
-                            <li>Opacity</li>
-                        </ul>
-                    </div>
-                    <div class="bzg_c" data-col="l7" data-sticky>
-<pre><code class="scss" hljs hljs-escape>/* NO! */
+## Use transform and opacity for high performance animation
+<div class="bzg">
+<div class="bzg_c" data-col="l5" data-sticky>
+
+Untuk membuat animasi contoh pada saat image di hover, image membesar, jangan gunakan width dan height.
+Gunakan property `transform` agar dapat dirender menggunakan GPU, bukan CPU. Pada dasarnya, untuk mendapatkan high performance animation, gunakan:
+
+* Translate
+* Scale
+* Rotate
+* Opacity
+
+</div>
+<div class="bzg_c" data-col="l7" data-sticky>
+
+```
+/* NO! */
 div {
     position: relative;
     top: 0;
@@ -30,6 +33,7 @@ div {
     &:hover {
         transform: translateY(100%);
     }
-}</code></pre>
-                    </div>
-                </div>
+}
+```
+</div>
+</div>

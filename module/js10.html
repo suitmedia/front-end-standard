@@ -1,18 +1,20 @@
-<h2>Return early</h2>
+## Return early
 
-                <div class="bzg">
-                    <div class="bzg_c" data-col="l5" data-sticky>
-                        <p>Return early apabila element yang akan dipakai tidak ada. Tujuannya adalah:</p>
+<div class="bzg">
+<div class="bzg_c" data-col="l5" data-sticky>
 
-                        <ul>
-                            <li>Body code akan tetap berada di level paling luar</li>
-                            <li>Mengurangi 1 indented/nested code</li>
-                        </ul>
+Return early apabila element yang akan dipakai tidak ada. Tujuannya adalah:
 
-                        <p>Perlu diperhatikan bahwa cara pengecekan sebuah element ada atau tidak, berbeda antara element dan nodelist/jQuery Objet.</p>
-                    </div>
-                    <div class="bzg_c" data-col="l7" data-sticky>
-<pre><code class="javascript" hljs>// bad
+* Body code akan tetap berada di level paling luar
+* Mengurangi 1 indented/nested code
+
+Perlu diperhatikan bahwa cara pengecekan sebuah element ada atau tidak, berbeda antara element dan nodelist/jQuery Objet.
+
+</div>
+<div class="bzg_c" data-col="l7" data-sticky>
+
+```
+// bad
 (function () {
     var $btn = $('button');
 
@@ -29,41 +31,43 @@
 
     $btn.click( openMenu );
 })();
-</code></pre>
-                    </div>
-                </div>
+```
+</div>
+</div>
 
-                <div class="bzg">
-                    <div class="bzg_c" data-col="l5">
-                        <h4>Element</h4>
-                        <p>Apabila hanya return 1 element saja seperti:</p>
+<div class="bzg">
+<div class="bzg_c" data-col="l5">
 
-                        <ul>
-                            <li>getElementById();</li>
-                            <li>querySelector();</li>
-                        </ul>
-                    </div>
-                    <div class="bzg_c" data-col="l7">
-<pre><code class="javascript" hljs>// Element
+#### Element
+Apabila hanya return 1 element saja seperti:
+
+* getElementById();
+* querySelector();
+
+</div>
+<div class="bzg_c" data-col="l7">
+```
+// Element
 var el = document.querySelector('.elem');
 
 if ( !el ) return;
-</code></pre>
-                    </div>
-                </div>
+```
+</div>
+</div>
 
-                <div class="bzg">
-                    <div class="bzg_c" data-col="l5">
-                        <h4>NodeList/jQuery Object</h4>
-                        <p>deklarasi di bawah akan me-return nodeList/jQuery Object:</p>
+<div class="bzg">
+<div class="bzg_c" data-col="l5">
 
-                        <ul>
-                            <li>querySelectorAll()</li>
-                            <li>$()</li>
-                        </ul>
-                    </div>
-                    <div class="bzg_c" data-col="l7">
-<pre><code class="javascript" hljs>// Nodelist
+#### NodeList/jQuery Object
+deklarasi di bawah akan me-return nodeList/jQuery Object:
+
+* querySelectorAll()
+* $()
+
+</div>
+<div class="bzg_c" data-col="l7">
+```
+// Nodelist
 var elems = document.querySelectorAll('.elems');
 
 if ( !elems.length ) return;
@@ -72,6 +76,6 @@ if ( !elems.length ) return;
 var $elems = $('.elems');
 
 if ( !$elems.length ) return;
-</code></pre>
-                    </div>
-                </div>
+```
+</div>
+</div>

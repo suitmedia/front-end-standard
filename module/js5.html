@@ -1,12 +1,16 @@
-<h2>Simpan string yang dibutuhkan dalam Object</h2>
+## Simpan string yang dibutuhkan dalam Object
 
-                <div class="bzg">
-                    <div class="bzg_c" data-col="l5" data-sticky>
-                        <p>Ada case di mana kita harus mengecek apakah sebuah element mempunyai nama class atau tidak. Dan terkadang kita harus mengecek apakah sebuah element memiliki class-class yang ada.</p>
-                        <p>Untuk mempermudah, string class dapat disimpan ke dalam object litaral.</p>
-                    </div>
-                    <div class="bzg_c" data-col="l7">
-<pre><code class="javascript" hljs>// ok
+<div class="bzg">
+<div class="bzg_c" data-col="l5" data-sticky>
+
+Ada case di mana kita harus mengecek apakah sebuah element mempunyai nama class atau tidak. Dan terkadang kita harus mengecek apakah sebuah element memiliki class-class yang ada.
+
+Untuk mempermudah, string class dapat disimpan ke dalam object litaral.
+
+</div>
+<div class="bzg_c" data-col="l7">
+```
+// ok
 var classActive = 'is-active',
     classIdle   = 'is-idle',
     classLabel  = 'label';
@@ -35,6 +39,6 @@ var checkElement = function ( elem ) {
         elem.addClass( classes.idle );
     }
 };
-</code></pre>
-                    </div>
-                </div>
+```
+</div>
+</div>

@@ -1,11 +1,15 @@
-<h2>Gunakan strict equality ( === )</h2>
+## Gunakan strict equality ( === )
 
-                <div class="bzg">
-                    <div class="bzg_c" data-col="l5" data-sticky>
-                        <p>Strict equality tidak hanya membandingkan value, namun juga membandingkan tipe value. Menggunakan lenient equality ( == ) hanya membanding value, namun tidak validasi tipe value.</p>
-                    </div>
-                    <div class="bzg_c" data-col="l7">
-<pre><code class="javascript" hljs>// Lenient equality
+<div class="bzg">
+<div class="bzg_c" data-col="l5" data-sticky>
+
+Strict equality tidak hanya membandingkan value, namun juga membandingkan tipe value. Menggunakan lenient equality ( == ) hanya membanding value, namun tidak validasi tipe value.
+
+</div>
+<div class="bzg_c" data-col="l7">
+
+```
+// Lenient equality
 var a = '1', // string
     b = 1;   // number
 
@@ -16,6 +20,7 @@ var a = '1', // string
     b = 1;   // number
 
 console.log( a === b ); // false
-</code></pre>
-                    </div>
-                </div>
+```
+
+</div>
+</div>

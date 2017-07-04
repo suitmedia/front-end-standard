@@ -14,13 +14,13 @@
 	height: 70px;
 	margin: 0 auto;
 
+	a & {
+		display: block;
+	}
+	
 	@media #{$large}{
 		margin: 0;
 		float: left;
-	}
-
-	a & {
-		display: block;
 	}
 }
 

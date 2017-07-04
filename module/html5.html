@@ -1,22 +1,25 @@
-    <h2>Label untuk tiap input</h2>
+## Label untuk tiap input
 
-    <div class="bzg">
-        <div class="bzg_c" data-col="l5" data-sticky>
-            <p>Secara semantic dan accessibility, tiap input harus memiliki label, meskipun secara design label digantikan oleh placeholder.</p>
-            <h4>Contoh: Form tanpa label</h4>
-            <form>
-                <div class="form-row">
-                    <label class="sr-only" for="exForm1">Username</label>
-                    <input class="form-input" id="exForm1" type="text" placeholder="Username">
-                </div>
-                <div class="form-row">
-                    <label class="sr-only" for="exForm2">Password</label>
-                    <input class="form-input" id="exForm2" type="password" placeholder="Password">
-                </div>
-            </form>
-        </div>
-        <div class="bzg_c" data-col="l7" data-sticky>
-<pre><code class="html" hljs hljs-no-escape>
+<div class="bzg">
+<div class="bzg_c" data-col="l5" data-sticky>
+Secara semantic dan accessibility, tiap input harus memiliki label, meskipun secara design label digantikan oleh placeholder.
+#### Contoh: Form tanpa label
+
+<form>
+<div class="form-row">
+<label class="sr-only" for="exForm1">Username</label>
+<input class="form-input" id="exForm1" type="text" placeholder="Username">
+</div>
+<div class="form-row">
+<label class="sr-only" for="exForm2">Password</label>
+<input class="form-input" id="exForm2" type="password" placeholder="Password">
+</div>
+</form>
+
+</div>
+<div class="bzg_c" data-col="l7" data-sticky>
+
+```
 &lt;div class="form-row">
     &lt;!-- class sr-only untuk menyembunyikan label, namun tetap accessible melalui screen reader -->
     &lt;label class="sr-only" for="exForm1">Username&lt;/label>
@@ -25,6 +28,8 @@
 &lt;div class="form-row">
     &lt;label class="sr-only" for="exForm2">Password&lt;/label>
     &lt;input class="form-input" id="exForm2" type="password" placeholder="Password">
-&lt;/div></code></pre>
-        </div>
-    </div>
+&lt;/div>
+```
+
+</div>
+</div>

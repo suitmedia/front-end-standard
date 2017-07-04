@@ -1,28 +1,22 @@
-    <h2>Standard HTML Declaration</h2>
+## Standard HTML Declaration
     
-    <div class="bzg">
-        <div class="bzg_c" data-col="l5" data-sticky>
-            <p>Aturan dalam deklarasi HTML</p>
+<div class="bzg">
+<div class="bzg_c" data-col="l5" data-sticky>
+Aturan dalam deklarasi HTML
 
-            <ul>
-                <li>Gunakan kutip 2, bukan kutip 1.</li>
-                <li>
-                    Urutan penempatan attribute:
+* Gunakan kutip 2, bukan kutip 1.
+* Urutan penempatan attribute:
+    1. Class
+    2. ID
+    3. Attribute bawaan (href, src)
+    4. Attribute global
+    5. Data attribute
+* Apabila deklarasi tag sudah terlalu panjang, diperbolehkan untuk menambahkan new line untuk tiap attribute.
 
-                    <ol>
-                        <li>Class</li>
-                        <li>ID</li>
-                        <li>Attribute bawaan (href, src)</li>
-                        <li>Attribute global</li>
-                        <li>Data attribute</li>
-                    </ol>
-                </li>
-                <li>Apabila deklarasi tag sudah terlalu panjang, diperbolehkan untuk menambahkan new line untuk tiap attribute.</li>
-            </ul>
-        </div>
-        <div class="bzg_c" data-col="l7" data-sticky>
-<pre><code class="html" hljs hljs-no-escape>
+</div>
+<div class="bzg_c" data-col="l7" data-sticky>
 
+```
 &lt;!-- Bad -->
 &lt;a data-attribute="link" href="..." id='link' class="link" title="my link">Link&lt;/a>
 
@@ -35,6 +29,6 @@
     href="..."
     title="my link"
     data-attribute="link">Link&lt;/a>
-</code></pre>
-        </div>
-    </div>
+```
+</div>
+</div>

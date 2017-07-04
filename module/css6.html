@@ -1,13 +1,19 @@
-<h2>No ID and !important in CSS</h2>
+## No ID and !important in CSS
 
-                <div class="bzg">
-                    <div class="bzg_c" data-col="l5" data-sticky>
-                        <p>Jangan ada deklarasi ID ataupun !important di dalam CSS karena ID memiliki tingkat <a href="http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/">specificity yang tinggi</a>.</p>
-                        <p>Apabila memang terpaksa harus menggunakan, gunakan attribute selector. Ini adalah sebuah hack dan sebisa mungkin jangan sampai ada.</p>
-                        <p>Penggunakan <code>!important</code> hanya diperbolehkan untuk override style 3<sup>rd</sup> party ataupun style plugin.</p>
-                    </div>
-                    <div class="bzg_c" data-col="l7" data-sticky>
-<pre><code class="css" hljs>/* NO! */
+<div class="bzg">
+<div class="bzg_c" data-col="l5" data-sticky>
+
+Jangan ada deklarasi ID ataupun !important di dalam CSS karena ID memiliki tingkat [specificity yang tinggi](http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/).
+
+Apabila memang terpaksa harus menggunakan, gunakan attribute selector. Ini adalah sebuah hack dan sebisa mungkin jangan sampai ada.
+
+Penggunakan `!important` hanya diperbolehkan untuk override style third party ataupun style plugin.
+
+</div>
+<div class="bzg_c" data-col="l7" data-sticky>
+
+```
+/* NO! */
 #myElem {
     prop: value;
 }
@@ -23,6 +29,7 @@ button {
 
 button {
     padding: .5em 1em !important;
-}</code></pre>
-                    </div>
-                </div>
+}
+```
+</div>
+</div>

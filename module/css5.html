@@ -1,16 +1,21 @@
-<h2>CSS Prefixing</h2>
+## CSS Prefixing
 
-                <div class="bzg">
-                    <div class="bzg_c" data-col="l5" data-sticky>
-                        <p>CSS prefixing di-handle oleh autoprefixer, jadi tidak perlu menambahkan vendor-prefix secara manual atau menggunakan mixin.</p>
-                        <p>Perlu diketahui autoprefixer hanya meng-parse <strong>CSS property official yang telah ditetapkan oleh W3.</strong>. Jadi property <code>appearance</code> apabila memang ingin digunakan, harus input vendor prefix secara manual.</p>
-                        <p>Khusus gradient, ikuti <a href="//developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient">deklarasi yang telah ditetapkan oleh W3</a>.</p>
-                    </div>
-                    <div class="bzg_c" data-col="l7" data-sticky>
-<pre><code class="scss" hljs>.box {
+<div class="bzg">
+<div class="bzg_c" data-col="l5" data-sticky>
+CSS prefixing di-handle oleh autoprefixer, jadi tidak perlu menambahkan vendor-prefix secara manual atau menggunakan mixin.
+
+Perlu diketahui autoprefixer hanya meng-parse **CSS property official yang telah ditetapkan oleh W3.**. Jadi property `appearance` apabila memang ingin digunakan, harus input vendor prefix secara manual.
+
+Khusus gradient, ikuti [deklarasi yang telah ditetapkan oleh W3](//developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient)
+
+</div>
+<div class="bzg_c" data-col="l7" data-sticky>   
+```
+.box {
     background-image: linear-gradient(to bottom, #fff, #eee);
     transform: scale(1);
     transition: all .3s ease;
-}</code></pre>
-                    </div>
-                </div>
+}
+```
+</div>
+</div>

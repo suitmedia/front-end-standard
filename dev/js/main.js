@@ -35,7 +35,7 @@
         },
 
         angularModule() {
-            const app = angular.module('App', ['ngRoute', 'hljs'])
+            const app = angular.module('App', ['ngRoute', 'hljs', 'hc.marked', 'ngSanitize'])
 
             app.controller('mainCtrl', ['$scope', '$route', ($scope, $route) => {
                 $scope.$route = $route
@@ -73,7 +73,7 @@
                     scope: {
                         data: '=ngModel'
                     },
-                    template: `<div ng-include="data.url"></div>`
+                    template: `<marked ng-include="data.url" compile="true"></marked>`
                 }
             })
 
@@ -100,6 +100,31 @@
                     controller: 'jsCtrl'
                 })
             }])
+
+            app.config(['markedProvider', markedProvider => {
+                markedProvider.setOptions({
+                    sanitize: true,
+                    pedantic: true,
+
+                    highlight: (code, lang) => {
+                        if (lang) {
+                            return hljs.highlight(lang, code, true).value
+                        } else {
+                            return hljs.highlightAuto(code).value
+                        }
+                    }
+                })
+            }])
+
+            app.run(['$rootScope', '$templateCache', ($rootScope, $templateCache) => {
+                $rootScope.$on('$routeChangeStart', (event, next, current) => {
+                    if (typeof(current) !== 'undefined'){
+                        $templateCache.remove(current.templateUrl)
+                    }
+                })
+            }])
+
+
         }
     }
 
