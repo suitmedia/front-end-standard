@@ -116,14 +116,6 @@
                 })
             }])
 
-            app.run(['$rootScope', '$templateCache', ($rootScope, $templateCache) => {
-                $rootScope.$on('$routeChangeStart', (event, next, current) => {
-                    if (typeof(current) !== 'undefined'){
-                        $templateCache.remove(current.templateUrl)
-                    }
-                })
-            }])
-
 
         }
     }
