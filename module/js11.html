@@ -1,14 +1,8 @@
 ## Convert String to Int
 
-<div class="bzg">
-<div class="bzg_c" data-col="l5" data-sticky>
-
 Untuk convert string ke int, gunakan Math.floor daripada parseInt karena Math.floor lebih baik dari segi performance.
 
 [Reference](http://jsperf.com/math-floor-vs-math-round-vs-parseint/148)
-
-</div>
-<div class="bzg_c" data-col="l7">
 
 ```
 var value = '1000';
@@ -17,6 +11,3 @@ console.log(typeof value); // String
 var newValue = Math.floor(value);
 console.log(typeof newValue); // Number
 ```
-
-</div>
-</div>

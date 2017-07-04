@@ -10,7 +10,7 @@
     padding: 12px 0;
     text-align: center;
     background: $black;
-    border-radius: 300px;
+    border-radius: 100px;
     color: $white;
     transition: all 0.4s ease;
 
@@ -46,7 +46,7 @@ code {
 }
 
 .section {
-    margin-bottom: 56px;
+    margin-bottom: $space * 3;
     
     &:last-child {
         margin-bottom: 0;
@@ -54,11 +54,11 @@ code {
 
     h2 {
         position: relative;
-        margin-bottom: 36px;
+        margin-bottom: $space * 1.5;
 
         &:after {
             position: absolute;
-            bottom: -16px;
+            bottom: -($space / 1.5);
             left: 0;
             width: 72px;
             height: 1px;

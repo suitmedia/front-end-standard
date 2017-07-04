@@ -1,6 +1,4 @@
 ## Use transform and opacity for high performance animation
-<div class="bzg">
-<div class="bzg_c" data-col="l5" data-sticky>
 
 Untuk membuat animasi contoh pada saat image di hover, image membesar, jangan gunakan width dan height.
 Gunakan property `transform` agar dapat dirender menggunakan GPU, bukan CPU. Pada dasarnya, untuk mendapatkan high performance animation, gunakan:
@@ -10,8 +8,6 @@ Gunakan property `transform` agar dapat dirender menggunakan GPU, bukan CPU. Pad
 * Rotate
 * Opacity
 
-</div>
-<div class="bzg_c" data-col="l7" data-sticky>
 
 ```css
 /* NO! */
@@ -35,5 +31,3 @@ div {
     }
 }
 ```
-</div>
-</div>

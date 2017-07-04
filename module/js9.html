@@ -1,12 +1,7 @@
 ## Unbind event handler sebelum menambahkan event handler.
 
-<div class="bzg">
-<div class="bzg_c" data-col="l5" data-sticky>
-
 Hal ini untuk menghindari sebuah event di trigger 2 kali apabila sebuah function dipanggil kembali.
 
-</div>
-<div class="bzg_c" data-col="l7" data-sticky>
 
 ```
 var openMenu = function () {
@@ -16,6 +11,3 @@ var openMenu = function () {
 btn.off('click', openMenu);
 btn.click( openMenu );
 ```
-
-</div>
-</div>

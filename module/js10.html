@@ -1,8 +1,5 @@
 ## Return early
 
-<div class="bzg">
-<div class="bzg_c" data-col="l5" data-sticky>
-
 Return early apabila element yang akan dipakai tidak ada. Tujuannya adalah:
 
 * Body code akan tetap berada di level paling luar
@@ -10,8 +7,6 @@ Return early apabila element yang akan dipakai tidak ada. Tujuannya adalah:
 
 Perlu diperhatikan bahwa cara pengecekan sebuah element ada atau tidak, berbeda antara element dan nodelist/jQuery Objet.
 
-</div>
-<div class="bzg_c" data-col="l7" data-sticky>
 
 ```
 // bad
@@ -32,40 +27,28 @@ Perlu diperhatikan bahwa cara pengecekan sebuah element ada atau tidak, berbeda 
     $btn.click( openMenu );
 })();
 ```
-</div>
-</div>
 
-<div class="bzg">
-<div class="bzg_c" data-col="l5">
-
-#### Element
+### Element
 Apabila hanya return 1 element saja seperti:
 
 * getElementById();
 * querySelector();
 
-</div>
-<div class="bzg_c" data-col="l7">
+
 ```
 // Element
 var el = document.querySelector('.elem');
 
 if ( !el ) return;
 ```
-</div>
-</div>
 
-<div class="bzg">
-<div class="bzg_c" data-col="l5">
-
-#### NodeList/jQuery Object
+### NodeList/jQuery Object
 deklarasi di bawah akan me-return nodeList/jQuery Object:
 
 * querySelectorAll()
 * $()
 
-</div>
-<div class="bzg_c" data-col="l7">
+
 ```
 // Nodelist
 var elems = document.querySelectorAll('.elems');
@@ -77,5 +60,3 @@ var $elems = $('.elems');
 
 if ( !$elems.length ) return;
 ```
-</div>
-</div>

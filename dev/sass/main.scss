@@ -54,8 +54,8 @@ a {
 
 
 .container {
-    width: 95%;
-    max-width: 1024px;
+    width: 90%;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -70,20 +70,19 @@ a {
 }
 
 .box {
-    margin: 210px 0 30px 0;
+    margin: ($space * 10) 0 $space 0;
     position: relative;
     z-index: 1;
-    min-height: 65vh;
     background: $white;
-    padding: 32px 12px;
+    padding: $space $space/2;
 
     .container {
-        max-width: 860px;
+        max-width: 800px;
     }
 
     @media #{$large} {
-        margin: 150px 0 30px 0;
-        padding: 56px 0;
+        margin: ($space * 7) 0 ($space * 2) 0;
+        padding: ($space * 2) 0;
     }
 }
 

@@ -1,14 +1,9 @@
 ## Loop
 
-<div class="bzg">
-<div class="bzg_c" data-col="l5" data-sticky>
-
 Untuk iterasi element, gunakan `for` daripada jQuery `each` karena `for` lebih cepat dari segi performance.
 
 [Reference](http://jsperf.com/jquery-each-vs-for-loop/39)
 
-</div>
-<div class="bzg_c" data-col="l7">
 ```
 // slow
 var $elems = $('.elem');
@@ -26,5 +21,3 @@ for ( var i = 0, j = $elems.length; i &lt; j; i++ ) {
     console.log(curr);
 }
 ```
-</div>
-</div>
