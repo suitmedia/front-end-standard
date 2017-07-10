@@ -8,28 +8,10 @@
         </footer>
     </blockquote>
     <ul class="home-links list-nostyle">
-        <li class="home-links-item">
-            <a class="home-links-anchor" href="#!html">
-                <span class="home-links-icon"><i class="fa fa-code"></i></span>
-                <span class="home-links-name">HTML Guideline</span>
-            </a>
-        </li>
-        <li class="home-links-item">
-            <a class="home-links-anchor" href="#!css">
-                <span class="home-links-icon">CSS</span>
-                <span class="home-links-name">CSS/SASS Guideline</span>
-            </a>
-        </li>
-        <li class="home-links-item">
-            <a class="home-links-anchor" href="#!js">
-                <span class="home-links-icon">JS</span>
-                <span class="home-links-name">JavaScript Guideline</span>
-            </a>
-        </li>
-        <li class="home-links-item">
-            <a class="home-links-anchor" href="#!tools">
-                <span class="home-links-icon"><i class="fa fa-wrench"></i></span>
-                <span class="home-links-name">Tools &amp; Plugins</span>
+        <li class="home-links-item" ng-repeat="section in sectionList">
+            <a class="home-links-anchor" ng-href="#!page/{{ section.sectionNum }}">
+                <span class="home-links-icon" ng-bind-html="section.sectionIcon"></span>
+                <span class="home-links-name">{{ section.sectionName }}</span>
             </a>
         </li>
     </ul>

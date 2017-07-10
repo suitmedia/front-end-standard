@@ -37,67 +37,44 @@
         angularModule() {
             const app = angular.module('App', ['ngRoute', 'hljs', 'hc.marked', 'ngSanitize'])
 
-            app.controller('mainCtrl', ['$scope', '$route', ($scope, $route) => {
+            app.controller('mainCtrl', ['$scope', '$rootScope', '$route', ($scope, $rootScope, $route) => {
+                $rootScope.sectionList = sectionList
                 $scope.$route = $route
-                $scope.module = moduleData
             }])
 
             app.controller('homeCtrl', ['$scope', $scope => {
-                $scope.pageHeader = ''
                 $scope.sectionNumber = 0
+                $scope.pageHeader = ''
             }])
 
-            app.controller('cssCtrl', ['$scope', $scope => {
-                $scope.pageHeader = 'CSS/SASS'
-                $scope.sectionNumber = 1
-            }])
-
-            app.controller('htmlCtrl', ['$scope', $scope => {
-                $scope.pageHeader = 'HTML'
-                $scope.sectionNumber = 2
-            }])
-
-            app.controller('toolsCtrl', ['$scope', $scope => {
-                $scope.pageHeader = 'Tools & Plugins'
-                $scope.sectionNumber = 3
-            }])
-
-            app.controller('jsCtrl', ['$scope', $scope => {
-                $scope.pageHeader = 'Javascript'
-                $scope.sectionNumber = 4
+            app.controller('pageCtrl', ['$scope', '$rootScope', '$routeParams', ($scope, $rootScope, $routeParams) => {
+                $scope.moduleList = moduleList
+                $scope.sectionNumber = Math.floor($routeParams.pageId)
+                $scope.pageHeader =  $rootScope.sectionList
+                                        .filter( a => a.sectionNum === $scope.sectionNumber )
+                                        .reduce ( a => a )
+                                        .sectionHeader
             }])
 
             app.directive('sectionLoader', () => {
                 return {
                     restrict: 'A',
                     scope: {
-                        data: '=ngModel'
+                        module: '=ngModel'
                     },
-                    template: `<marked ng-include="data.url" compile="true"></marked>`
+                    template: `<marked ng-include="module.url" compile="true"></marked>`
                 }
             })
 
-            app.config( ['$routeProvider', $routeProvider => {
+            app.config( ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
                 $routeProvider
                 .when('/', {
                     templateUrl: 'home.html',
                     controller: 'homeCtrl'
                 })
-                .when('/css', {
+                .when('/page/:pageId', {
                     templateUrl: 'page.html',
-                    controller: 'cssCtrl'
-                })
-                .when('/html', {
-                    templateUrl: 'page.html',
-                    controller: 'htmlCtrl'
-                })
-                .when('/tools', {
-                    templateUrl: 'page.html',
-                    controller: 'toolsCtrl'
-                })
-                .when('/js', {
-                    templateUrl: 'page.html',
-                    controller: 'jsCtrl'
+                    controller: 'pageCtrl'
                 })
             }])
 
@@ -115,8 +92,6 @@
                     }
                 })
             }])
-
-
         }
     }
 
