@@ -48,8 +48,9 @@
             }])
 
             app.controller('pageCtrl', ['$scope', '$rootScope', '$routeParams', ($scope, $rootScope, $routeParams) => {
-                $scope.moduleList = moduleList
                 $scope.sectionNumber = Math.floor($routeParams.pageId)
+                $scope.moduleList = moduleList
+                                        .filter( a => a.section === $scope.sectionNumber)
                 $scope.pageHeader =  $rootScope.sectionList
                                         .filter( a => a.sectionNum === $scope.sectionNumber )
                                         .reduce ( a => a )
