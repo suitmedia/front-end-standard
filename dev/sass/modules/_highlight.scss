@@ -76,3 +76,8 @@ pre {
     background: #1d1f21;
     padding: $space;
 }
+code,
+kbd,
+samp {
+    font-family: 'Fira Code', monospace;
+}

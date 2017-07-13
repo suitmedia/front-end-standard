@@ -40,6 +40,7 @@
             app.controller('mainCtrl', ['$scope', '$rootScope', '$route', ($scope, $rootScope, $route) => {
                 $rootScope.sectionList = sectionList
                 $scope.$route = $route
+                $scope.pageURL = window.location.href
             }])
 
             app.controller('homeCtrl', ['$scope', $scope => {

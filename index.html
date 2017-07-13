@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="en" ng-app="App">
+<html class="no-js" lang="en" ng-app="App" ng-controller="mainCtrl">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -8,29 +8,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
 
-    <meta property="og:url" content="">
-    <meta property="og:title" content="">
-    <meta property="og:site_name" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
+    <meta property="og:url" content="{{ pageURL }}">
+    <meta property="og:title" content="Suitmedia Styleguides {{ $route.current.scope.pageHeader }}">
+    <meta property="og:site_name" content="Suitmedia Front-end Styleguides">
+    <meta property="og:description" content="Suitmedia Front-end Styleguides">
+    <meta property="og:image" content="assets/img/apple-icon.png">
     <meta property="og:type" content="website">
-    <meta property="fb:app_id" content="">
 
-    <meta name="twitter:card" content="">
-    <meta name="twitter:site" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:image" content="">
+    <meta name="twitter:card" content="Suitmedia Front-end Styleguides">
+    <meta name="twitter:site" content="Suitmedia Front-end Styleguides">
+    <meta name="twitter:description" content="Suitmedia Front-end Styleguides">
+    <meta name="twitter:title" content="Suitmedia Styleguides {{ $route.current.scope.pageHeader }}">
+    <meta name="twitter:image" content="assets/img/apple-icon.png">
 
     <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
 
-    <title>Suitmedia Front-end Styleguides</title>
+    <title>Suitmedia Styleguides {{ $route.current.scope.pageHeader }}</title>
 
     <link rel="stylesheet" href="assets/css/main.css">
     <script src="assets/js/vendor/modernizr.min.js"></script>
 </head>
-<body ng-controller="mainCtrl">
+<body>
     <!--[if lt IE 9]>
         <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->

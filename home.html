@@ -11,7 +11,7 @@
         <li class="home-links-item" ng-repeat="section in sectionList">
             <a class="home-links-anchor" ng-href="#!page/{{ section.sectionNum }}">
                 <span class="home-links-icon" ng-bind-html="section.sectionIcon"></span>
-                <span class="home-links-name">{{ section.sectionName }}</span>
+                <span class="home-links-name ng-cloak">{{ section.sectionName }}</span>
             </a>
         </li>
     </ul>
