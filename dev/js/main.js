@@ -58,8 +58,6 @@
                                             .map( a => a.sectionHeader)
                                             .reduce ( (current, next) => next , null )
                 }
-
-                console.log($scope.sectionId)
             }])
 
             app.directive('sectionLoader', () => {
