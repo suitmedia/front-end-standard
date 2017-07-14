@@ -1,0 +1,30 @@
+<html ng-app="cms" ng-controller="cmsController" ng-init="init()">
+	<head>
+		<title>Suitmedia Front-End Standards Node.JS CMS</title>
+	</head>
+	<body>
+		
+		<h2>Section Editor</h2>
+		<form ng-submit="postSection()">
+			<input type="text" placeholder="id" ng-model="input.sectionId">
+			<input type="text" placeholder="name" ng-model="input.sectionName">
+			<input type="text" placeholder="header" ng-model="input.sectionHeader">
+			<input type="text" placeholder="icon" ng-model="input.sectionIcon">
+			<button>Submit</button>
+		</form>
+		<hr>
+		<h2>Section List</h2>
+		<ul>
+			<li ng-repeat="section in sectionList">
+				<div ng-bind="section.sectionId"></div>
+				<div ng-bind="section.sectionName"></div>
+				<div ng-bind="section.sectionHeader"></div>
+				<div ng-bind="section.sectionIcon"></div>
+			</li>
+		</ul>
+		<button ng-click="log()">log</button>
+
+		<script type="text/javascript" src="js/vendor/angular.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+	</body>
+</html>

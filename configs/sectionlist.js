@@ -22,5 +22,5 @@ var sectionList = [
             "sectionName" : "Tools & Plugin",
             "sectionHeader" : "Tools & Plugin",
             "sectionIcon" : "<i class=\"fa fa-wrench\"></i>"
-        }
+        }, 
     ];
