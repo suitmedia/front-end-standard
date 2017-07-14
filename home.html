@@ -9,7 +9,7 @@
     </blockquote>
     <ul class="home-links list-nostyle">
         <li class="home-links-item" ng-repeat="section in sectionList">
-            <a class="home-links-anchor" ng-href="#!page/{{ section.sectionNum }}">
+            <a class="home-links-anchor" ng-href="#!/{{ section.sectionId }}">
                 <span class="home-links-icon" ng-bind-html="section.sectionIcon"></span>
                 <span class="home-links-name ng-cloak">{{ section.sectionName }}</span>
             </a>

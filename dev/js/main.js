@@ -43,19 +43,23 @@
                 $scope.pageURL = window.location.href
             }])
 
-            app.controller('homeCtrl', ['$scope', $scope => {
-                $scope.sectionNumber = 0
-                $scope.pageHeader = ''
-            }])
-
             app.controller('pageCtrl', ['$scope', '$rootScope', '$routeParams', ($scope, $rootScope, $routeParams) => {
-                $scope.sectionNumber = Math.floor($routeParams.pageId)
-                $scope.moduleList = moduleList
-                                        .filter( a => a.section === $scope.sectionNumber)
-                $scope.pageHeader =  $rootScope.sectionList
-                                        .filter( a => a.sectionNum === $scope.sectionNumber )
-                                        .reduce ( a => a )
-                                        .sectionHeader
+                if (!$routeParams.pageId) {
+                    $scope.page = 'home.html'
+                    $scope.sectionId = 0
+                    $scope.pageHeader = ''
+                } else {
+                    $scope.page = 'page.html'
+                    $scope.sectionId = $routeParams.pageId
+                    $scope.moduleList = moduleList
+                                            .filter( a => a.section === $scope.sectionId)
+                    $scope.pageHeader =  $rootScope.sectionList
+                                            .filter( a => a.sectionId === $scope.sectionId )
+                                            .map( a => a.sectionHeader)
+                                            .reduce ( (current, next) => next , null )
+                }
+
+                console.log($scope.sectionId)
             }])
 
             app.directive('sectionLoader', () => {
@@ -70,13 +74,12 @@
 
             app.config( ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) => {
                 $routeProvider
-                .when('/', {
-                    templateUrl: 'home.html',
-                    controller: 'homeCtrl'
-                })
-                .when('/page/:pageId', {
-                    templateUrl: 'page.html',
+                .when('/:pageId?', {
+                    template: '<div ng-include="page"></div>',
                     controller: 'pageCtrl'
+                })
+                .otherwise({
+                    redirectTo: '/'
                 })
             }])
 

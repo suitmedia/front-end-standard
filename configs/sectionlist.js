@@ -1,26 +1,26 @@
 var sectionList = [
         {
+            'sectionId' : 'html',
             'sectionName' : 'HTML Guideline',
             'sectionHeader' : 'HTML',
-            'sectionNum' : 1,
             'sectionIcon' : '<i class="fa fa-code"></i>'
         },
         {
+            'sectionId' : 'css',
             'sectionName' : 'CSS/SASS Guideline',
             'sectionHeader' : 'CSS/SASS',
-            'sectionNum' : 2,
             'sectionIcon' : 'CSS'
         },
         {
+            'sectionId' : 'js',
             'sectionName' : 'JavaScript Guideline',
             'sectionHeader' : 'JavaScript',
-            'sectionNum' : 3,
             'sectionIcon' : 'JS'
         },
         {
+            'sectionId' : 'tools',
             'sectionName' : 'Tools & Plugin',
             'sectionHeader' : 'Tools & Plugin',
-            'sectionNum' : 4,
             'sectionIcon' : '<i class="fa fa-wrench"></i>'
         }
     ];
