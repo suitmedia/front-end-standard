@@ -1,0 +1,130 @@
+<html ng-app="cms" ng-controller="moduleController" ng-init="init()">
+	<head>
+		<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <meta name="description" content="Suitmedia Front-end Standards CMS">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+		
+		<title>Suitmedia Front-End Standards CMS</title>
+
+		<link rel="stylesheet" href="css/main.css">
+		<style>
+			body {
+				font-size: 0.95em;
+			}
+			.cms-header {
+				padding: 2em 0;
+			}
+			.section-form {
+				display: none;
+			}
+			.modal {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 10;
+				padding: 2em 0;
+				width: 100%;
+				height: 100vh;
+			}
+			.modal-dim {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 1005;
+				background: rgba(0,0,0,0.4);
+			}
+
+			.modal-body {
+				position: relative;
+				margin: 0 auto;
+				width: 70%;
+				padding: 2em 0;
+				background: #fff;
+				z-index: 5;
+			}
+			
+			.modal-exit {
+				position: absolute;
+				top: 0;
+				right: 0;
+				display: inline-block;
+				width: 3em;
+				height: 2.5em;
+				background: #000;
+				color: #fff;
+				border: none;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+	
+		<div class="container">
+
+			<header class="cms-header">
+				<h1>Suitmedia Front-end Standards | Module Editor</h1>
+			</header>
+			
+			<main>
+				<h2>New Module</h2>
+				<form ng-submit="postModule()">
+					<label for="newModuleTitle">Title</label>
+					<input class="form-input form-input--block block" id="newModuleTitle" type="text" placeholder="Module Title" ng-model="newModule.name">
+					<label for="newModuleTitle">Section</label>
+					<select class="form-input form-input--block block" id="newModuleSection" ng-model="newModule.section">
+						<option ng-repeat="section in sectionList" ng-value="section.sectionId">{{section.sectionName}}</option>
+					</select>
+					<label for="newModuleContent">Content</label>
+					<textarea class="form-input form-input--block block" id="newModuleContent" rows="10" placeholder="Module Content (on markdown format)" ng-model="newModule.content"></textarea>
+
+					<button type="submit" class="btn">Submit</button>
+				</form>
+				<hr>
+				<h2>Edit Module</h2>
+				<ul class="list-nostyle">
+					<li ng-repeat="module in moduleList">
+						<div>name: <span ng-bind="module.name"></span></div>
+						<div>url: <span ng-bind="module.url"></span></div>
+						<div>sectionId: <span ng-bind="module.section"></span></div>
+						<button class="btn block" ng-click="showModal(module)">edit</button>
+						<button class="btn block" ng-click="deleteModule(module)">delete</button>
+						<hr>
+					</li>
+				</ul>
+
+				<div class="modal">
+					<div class="modal-dim"></div>
+					<div class="modal-body">
+						<button class="modal-exit">&times;</button>
+						<div class="container">
+							<form ng-submit="updateModule()">
+								<label for="moduleTitle">Title</label>
+								<input class="form-input form-input--block block" id="moduleTitle" type="text" placeholder="Module Title" ng-model="editModule.name">
+								<label for="moduleSection">Section</label>
+								<select class="form-input form-input--block block" id="moduleSection" ng-model="editModule.section">
+									<option ng-repeat="section in sectionList" ng-value="section.sectionId">{{section.sectionName}}</option>
+								</select>
+								<label for="moduleContent">Content</label>
+								<textarea class="form-input form-input--block block" id="moduleContent" rows="10" placeholder="Module Content (on markdown format)" ng-model="editModule.content"></textarea>
+
+								<button type="submit" class="btn btn--block">Edit</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</main>
+
+		</div>
+
+		<script type="text/javascript" src="js/vendor/angular.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+	</body>
+</html>

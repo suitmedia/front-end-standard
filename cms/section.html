@@ -1,0 +1,72 @@
+<html ng-app="cms" ng-controller="sectionController" ng-init="getSection()">
+	<head>
+		<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <meta name="description" content="Suitmedia Front-end Standards CMS">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+		
+		<title>Suitmedia Front-End Standards CMS</title>
+
+		<link rel="stylesheet" href="css/main.css">
+		<style>
+			body {
+				font-size: 0.95em;
+			}
+			.cms-header {
+				padding: 2em 0;
+			}
+			.section-form {
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header class="cms-header">
+				<h1>Suitmedia Front-end Standards | Section Editor</h1>
+			</header>
+			
+			<main>
+				<h2>New Section</h2>
+				<form ng-submit="postSection()">
+					<input class="form-input" type="text" placeholder="route" ng-model="newInput.sectionId">
+					<input class="form-input" type="text" placeholder="name" ng-model="newInput.sectionName">
+					<input class="form-input" type="text" placeholder="header" ng-model="newInput.sectionHeader">
+					<input class="form-input" type="text" placeholder="icon" ng-model="newInput.sectionIcon">
+					<button class="btn">Submit</button>
+				</form>
+				<hr>
+				<h2>Edit Section</h2>
+				<ul class="list-nostyle">
+					<li ng-repeat="section in sectionList">
+						<div>id: <span ng-bind="section.id"></span></div>
+						<div>route: /<span ng-bind="section.sectionId"></span></div>
+						<div>name: <span ng-bind="section.sectionName"></span></div>
+						<div>header: <span ng-bind="section.sectionHeader"></span></div>
+						<div>icon: <span ng-bind="section.sectionIcon"></span></div>
+						<form class="section-form" id="{{section.id}}" ng-submit="editSection(section.id)">
+							<input class="form-input" type="text" placeholder="route" ng-model="editInput.sectionId">
+							<input class="form-input" type="text" placeholder="name" ng-model="editInput.sectionName">
+							<input class="form-input" type="text" placeholder="header" ng-model="editInput.sectionHeader">
+							<input class="form-input" type="text" placeholder="icon" ng-model="editInput.sectionIcon">
+							<button class="btn" type="Submit">edit</button>
+						</form>
+						<button class="btn block btn-edit" id="btn{{section.id}}" ng-click="showForm(section.id)">edit</button>
+						<button class="btn block" ng-click="resetInput()">reset</button>
+						<button class="btn block" ng-click="deleteSection(section)">delete</button>
+						<hr>
+					</li>
+				</ul>
+			</main>
+
+		</div>
+
+		<script type="text/javascript" src="js/vendor/angular.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+	</body>
+</html>
