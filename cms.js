@@ -8,47 +8,75 @@ app.use(express.static('cms'))
 app.use(express.static('assets'))
 app.use(bodyParser.json())
 
+
+
+
+
+const readSection = () => {
+  let section = fs.readFileSync('configs/sectionlist.js', "utf8").split('\n')
+
+  section.shift()
+  return (JSON.parse(section.join('\n')))
+}
+
+const readSectionAsString = () => {
+  return fs.readFileSync('configs/sectionlist.js', "utf8")
+}
+
+const storeSection = newData => {
+	const topBuffer = 'var sectionList = \n'
+	let buffer = topBuffer + JSON.stringify(newData)
+	
+  fs.writeFileSync('configs/sectionlist.js', buffer, {encoding: 'utf8'})
+}
+
+
+
+
+
 app.get('/', (req, res) => {
 	res.sendFile(path.join(`${__dirname}/cms/index.html`))
 })
 
 app.get('/sectionList', (req, res) => {
-	const buffer = fs.readFileSync('configs/sectionlist.js', "utf8").split('\n')
-	let newBuffer = buffer
-										.map( (current, index, arr) => {
-											if( index !== 0 && index !== arr.length - 1  ) {
-												return current
-											} else {
-												return ''
-											}
-										})
-										.join('\n')
-										.replace(/\s/g, '')
-	newBuffer = `[ ${newBuffer} ]`
-	res.send(newBuffer)
+	const bufferObj = readSection()
+
+	res.send(bufferObj)
 })
 
 app.post('/sectionAdd', (req, res) => {
-	const buffer = fs.readFileSync('configs/sectionlist.js', "utf8").split('\n')
-	const topBuffer = buffer[0]
-	const bottomBuffer = '\n' + buffer[buffer.length - 1]
-	const midBuffer = buffer
-										.map( (current, index, arr) => {
-											if( index !== 0 && index !== arr.length - 1 ) {
-												return current
-											} else {
-												return ''
-											}
-										})
-										.concat(', ')
-										.concat(JSON.stringify(req.body))
-										.join('\n')
-	const newBuffer = topBuffer + midBuffer + bottomBuffer
+	let newSection = req.body
+	let bufferObj = readSection()
 
-	fs.writeFileSync('configs/sectionlist.js', newBuffer, {
-    encoding: 'utf8'
-  })
+	newSection.id = Date.now()
+	console.log(newSection)
+	bufferObj.push(newSection)
+	storeSection(bufferObj)
+	res.send('ok')
+})
 
+app.post('/sectionDelete', (req, res) => {
+	const id = req.body.id
+	let buffer = readSection().filter( obj => {
+		return !( obj.id === id )
+	})
+	
+	storeSection(buffer)
+	res.send('ok')
+})
+
+app.post('/sectionEdit', (req, res) => {
+	const newData = req.body
+	console.log(newData)
+	let buffer = readSection().map( obj => {
+		if (obj.id === newData.id) {
+			return newData
+		}
+		else
+			return obj
+	})
+
+	storeSection(buffer)
 	res.send('ok')
 })
 
