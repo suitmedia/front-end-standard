@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
 
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="icon" type="image/png" href="img/favicon.png">
 		
 		<title>Suitmedia Front-End Standards CMS</title>
 
@@ -26,11 +26,11 @@
 
 			<nav class="tab-nav">
 				<ul class="tab-nav-list list-nostyle list-inline">
-					<li class="tab-nav-item" ng-class="{'is-active':isTabActive==='new'}" ng-click="isTabActive='new'">
+					<li class="tab-nav-item" ng-class="{'is-active':isTabActive=='new'}" ng-click="isTabActive='new'">
 						<a class="tab-nav-anchor" href="#!">New Module</a>
 					</li>
 
-					<li class="tab-nav-item" ng-repeat="section in sectionList" ng-class="{'is-active':isTabActive==='{{section.id}}'}" ng-click="changeTab(section.id)">
+					<li class="tab-nav-item" ng-repeat="section in sectionList" ng-class="{'is-active':isTabActive==section.id}" ng-click="changeTab(section.id)">
 						<a class="tab-nav-anchor ng-cloak" href="#!">{{section.sectionHeader}}</a>
 					</li>
 				</ul>
@@ -47,7 +47,7 @@
 						<div class="form__row">
 							<label class="form-label" for="newModuleTitle">Section</label>
 							<select class="form-input form-input--block" id="newModuleSection" ng-model="newModule.section">
-								<option ng-repeat="section in sectionList" ng-value="section.sectionId">{{section.sectionName}}</option>
+								<option ng-repeat="section in sectionList" ng-value="section.id">{{section.sectionName}}</option>
 							</select>
 						</div>
 						<div class="form__row">
@@ -57,16 +57,14 @@
 						<button type="submit" class="btn">Submit</button>
 					</form>
 				</div>
-				
 
-				<div class="tab" ng-repeat="section in sectionList" ng-class="{'is-active':isTabActive=='{{section.id}}'}">
+				<div class="tab" ng-repeat="section in sectionList" ng-class="{'is-active':isTabActive==section.id}">
 					<h2 class="cms-section-title">Edit <span ng-bind="section.sectionName"></span></h2>
 					<ul class="card-list list-nostyle">
 						<li class="card-item" ng-repeat="module in moduleList">
-							<div class="card-body text-ellipsis">
+							<div class="card-body">
 								<p class="card-detail card-detail-name" ng-bind="module.name"></p>
 								<p class="card-detail" ng-bind="module.url"></p>
-								<p class="card-detail">section: <span ng-bind="module.section"></span></p>
 							</div>
 							<div class="card-footer">
 								<button class="btn" ng-click="loadModal(module)">edit</button>
@@ -86,11 +84,11 @@
 								<input class="form-input form-input--block block" id="moduleTitle" type="text" placeholder="Module Title" ng-model="editModule.name">
 								<label for="moduleSection">Section</label>
 								<select class="form-input form-input--block block" id="moduleSection" ng-model="editModule.section">
-									<option ng-repeat="section in sectionList" ng-value="section.sectionId">{{section.sectionName}}</option>
+									<option ng-repeat="section in sectionList" ng-value="section.id">{{section.sectionName}}</option>
 								</select>
 								<label for="moduleContent">Content</label>
 								<textarea class="form-input form-input--block block" id="moduleContent" rows="10" placeholder="Module Content (on markdown format)" ng-model="editModule.content"></textarea>
-								<button type="submit" class="btn btn--block">Edit</button>
+								<button type="submit" class="btn btn--block">Save</button>
 							</form>
 						</div>
 					</div>
@@ -102,7 +100,6 @@
 			<p class="cms-footer-copyright">&copy;2017 Suitmedia</p>
 		</footer>
 
-		<script type="text/javascript" src="js/vendor/jquery.min.js"></script>
 		<script type="text/javascript" src="js/vendor/angular.min.js"></script>
 		<script type="text/javascript" src="main.js"></script>
 	</body>

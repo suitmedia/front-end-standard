@@ -8,25 +8,34 @@
 	display: flex;
 	flex-wrap: wrap;
 	background: $white;
-	border: solid 1px $black30;
 	padding: $space / 2;
-	width: 23%;
 	margin: $space / 4;
+	border: solid 1px $black30;
+	width: 100%;
+	text-align: center;
+
+	@media #{$medium} {
+		text-align: left;
+		width: 23%;
+	}
 }
 
 .card-body {
 	align-self: flex-start;
+	width: 100%;
 }
 
 .card-footer {
 	align-self: flex-end;
+	width: 100%;
 }
 
 .card-detail {
 	margin-bottom: $space / 4;
+	word-break: break-all;
 }
 
 .card-detail-name {
 	font-weight: 700;
-	//line-height: 1.2em;
+	word-break: normal;
 }

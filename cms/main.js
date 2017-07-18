@@ -5,6 +5,7 @@ app.controller('sectionController', ['$scope', '$http', ($scope, $http) => {
 	$scope.newInput = {}
 	$scope.editInput = {}
 	$scope.isTabActive = 'new'
+	$scope.isFormActive = ''
 
 	$scope.getSection = () => {
 		$http.get('sectionList').then( res => { 
@@ -45,21 +46,9 @@ app.controller('sectionController', ['$scope', '$http', ($scope, $http) => {
 	}
 
 	$scope.showForm = (target) => {
-		let targetForms = document.getElementById(target)
-		let forms = [...document.querySelectorAll('.cms-section-form')]
-		let editBtn = document.getElementById(`btn${target}`)
-		let editBtns = [...document.querySelectorAll('.btn-edit')]
-
 		$scope.resetInput()
-
-		forms.forEach( current => {
-			current.style.display = 'none'
-		})
-		editBtns.forEach( current => {
-			current.style.display = 'inline-block'
-		})
-		targetForms.style.display = 'block'
-		editBtn.style.display = 'none'
+		$scope.isFormActive = target
+		console.log($scope.isFormActive)
 	}
 
 }])
@@ -101,8 +90,12 @@ app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
 	}
 
 	$scope.deleteModule = (module) => {
+		const sectionId = module.section
+
 		$http.post('moduleDelete', module).then( () => {
 			$scope.getModule()
+		}).then( () => {
+			$scope.changeTab(sectionId)
 		})
 	}
 

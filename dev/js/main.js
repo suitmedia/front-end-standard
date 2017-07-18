@@ -49,14 +49,14 @@
                     $scope.sectionId = 0
                     $scope.pageHeader = ''
                 } else {
+                    const activeSection = $rootScope.sectionList
+                                            .filter (a => a.sectionId === $routeParams.pageId)
+                                            .reduce ( (current, next) => next , null )
                     $scope.page = 'page.html'
-                    $scope.sectionId = $routeParams.pageId
+                    $scope.sectionId = activeSection.id
+                    $scope.pageHeader = activeSection.sectionHeader
                     $scope.moduleList = moduleList
                                             .filter( a => a.section === $scope.sectionId)
-                    $scope.pageHeader =  $rootScope.sectionList
-                                            .filter( a => a.sectionId === $scope.sectionId )
-                                            .map( a => a.sectionHeader)
-                                            .reduce ( (current, next) => next , null )
                 }
             }])
 

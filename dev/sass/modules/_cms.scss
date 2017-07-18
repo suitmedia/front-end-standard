@@ -18,6 +18,10 @@
 
 .cms-section-form {
 	display: none;
+
+	&.is-active {
+		display: inline-block;
+	}
 }
 
 .cms-section-title {
@@ -50,11 +54,12 @@
 
 .cms-modal-body {
 	position: relative;
-	margin: 0 auto;
-	width: 70%;
-	padding: $space 0;
-	background: #fff;
 	z-index: 5;
+	margin: 0 auto;
+	width: 90%;
+	max-width: 960px;
+	padding: $space 0;
+	background: $white;
 }
 
 .cms-modal-exit {
