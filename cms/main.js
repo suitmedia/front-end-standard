@@ -4,6 +4,7 @@ app.controller('sectionController', ['$scope', '$http', ($scope, $http) => {
 	$scope.sectionList = [{}]
 	$scope.newInput = {}
 	$scope.editInput = {}
+	$scope.isTabActive = 'new'
 
 	$scope.getSection = () => {
 		$http.get('sectionList').then( res => { 
@@ -45,7 +46,7 @@ app.controller('sectionController', ['$scope', '$http', ($scope, $http) => {
 
 	$scope.showForm = (target) => {
 		let targetForms = document.getElementById(target)
-		let forms = [...document.querySelectorAll('.section-form')]
+		let forms = [...document.querySelectorAll('.cms-section-form')]
 		let editBtn = document.getElementById(`btn${target}`)
 		let editBtns = [...document.querySelectorAll('.btn-edit')]
 
@@ -64,14 +65,17 @@ app.controller('sectionController', ['$scope', '$http', ($scope, $http) => {
 }])
 
 app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
+	$scope.rawModuleList = [{}]
 	$scope.moduleList = [{}]
 	$scope.sectionList = [{}]
 	$scope.newModule = {}
 	$scope.editModule = {}
+	$scope.isModalActive = false
+	$scope.isTabActive = 'new'
 
 	$scope.getModule = () => {
 		$http.get('moduleList').then( res => { 
-      $scope.moduleList = res.data
+      $scope.rawModuleList = res.data
 		})
 	}
 
@@ -92,7 +96,7 @@ app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
 		$http.post('moduleEdit', $scope.editModule).then( (res, req) => {
 			$scope.getModule()
 			$scope.resetInput()
-			hideModal()
+			$scope.dismissModal()
 		})
 	}
 
@@ -107,36 +111,28 @@ app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
 	}
 
 	$scope.loadModal = (module) => {
+		$scope.isModalActive = true
 		$scope.editModule = module
 		$http.get(`getModule/${module.id}`).then( (res, req) => {
 			$scope.editModule.content = res.data
 		})
-		showModal()
+	}
+
+	$scope.dismissModal = () => {
+		$scope.isModalActive = false
+	}
+
+	$scope.changeTab = tabId => {
+		$scope.isTabActive = tabId
+		$scope.moduleList = $scope.rawModuleList.filter( current => {
+			return current.section == tabId
+		})
 	}
 
 	$scope.init = () => {
 		$scope.getSection()
 		$scope.getModule()
-		initModal()
 	}
-	
+
 }])
 
-
-
-
-const initModal = () => {
-	document.querySelector('.modal-exit').addEventListener('click', e => {
-		hideModal()
-	})
-}
-
-const showModal = () => {
-	let modal = document.querySelector('.modal')
-	modal.style.display = 'block'
-}
-
-const hideModal = () => {
-	let modal = document.querySelector('.modal')
-	modal.style.display = 'none'
-}

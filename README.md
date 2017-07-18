@@ -1,5 +1,5 @@
-# Suitmedia Front-End Styleguides
-> A github page for front-end code preference on Suitmedia, built with AngularJS 1.6. CMS built with NodeJS using ExpressJS library.
+# Suitmedia Front-End Standards
+> A github page for front-end code preferences in Suitmedia, built with AngularJS 1.6. CMS built with NodeJS using ExpressJS library.
 
 ### Using the CMS
 1. Make sure you have NodeJS installed (at least v6.4.0)

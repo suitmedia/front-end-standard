@@ -1,4 +1,4 @@
-<html ng-app="cms" ng-controller="sectionController" ng-init="getSection()">
+<html ng-app="cms">
 	<head>
 		<meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -13,59 +13,83 @@
 		<title>Suitmedia Front-End Standards CMS</title>
 
 		<link rel="stylesheet" href="css/main.css">
-		<style>
-			body {
-				font-size: 0.95em;
-			}
-			.cms-header {
-				padding: 2em 0;
-			}
-			.section-form {
-				display: none;
-			}
-		</style>
 	</head>
-	<body>
-		<div class="container">
-			<header class="cms-header">
-				<h1>Suitmedia Front-end Standards | Section Editor</h1>
-			</header>
+	<body ng-controller="sectionController" ng-init="getSection()">
+		
+		<header class="cms-header">
+			<div class="container">
+				<h1>Suitmedia Front-end Standards CMS | Section Editor</h1>
+			</div>
+		</header>
+					
+		<main class="cms-main">
 			
-			<main>
-				<h2>New Section</h2>
-				<form ng-submit="postSection()">
-					<input class="form-input" type="text" placeholder="route" ng-model="newInput.sectionId">
-					<input class="form-input" type="text" placeholder="name" ng-model="newInput.sectionName">
-					<input class="form-input" type="text" placeholder="header" ng-model="newInput.sectionHeader">
-					<input class="form-input" type="text" placeholder="icon" ng-model="newInput.sectionIcon">
-					<button class="btn">Submit</button>
-				</form>
-				<hr>
-				<h2>Edit Section</h2>
-				<ul class="list-nostyle">
-					<li ng-repeat="section in sectionList">
-						<div>id: <span ng-bind="section.id"></span></div>
-						<div>route: /<span ng-bind="section.sectionId"></span></div>
-						<div>name: <span ng-bind="section.sectionName"></span></div>
-						<div>header: <span ng-bind="section.sectionHeader"></span></div>
-						<div>icon: <span ng-bind="section.sectionIcon"></span></div>
-						<form class="section-form" id="{{section.id}}" ng-submit="editSection(section.id)">
-							<input class="form-input" type="text" placeholder="route" ng-model="editInput.sectionId">
-							<input class="form-input" type="text" placeholder="name" ng-model="editInput.sectionName">
-							<input class="form-input" type="text" placeholder="header" ng-model="editInput.sectionHeader">
-							<input class="form-input" type="text" placeholder="icon" ng-model="editInput.sectionIcon">
-							<button class="btn" type="Submit">edit</button>
-						</form>
-						<button class="btn block btn-edit" id="btn{{section.id}}" ng-click="showForm(section.id)">edit</button>
-						<button class="btn block" ng-click="resetInput()">reset</button>
-						<button class="btn block" ng-click="deleteSection(section)">delete</button>
-						<hr>
+			<nav class="tab-nav">
+				<ul class="tab-nav-list list-nostyle list-inline">
+					<li class="tab-nav-item" ng-class="{'is-active':isTabActive==='new'}" ng-click="isTabActive='new'">
+						<a class="tab-nav-anchor" href="#!">New Section</a>
+					</li>
+					<li class="tab-nav-item" ng-class="{'is-active':isTabActive==='edit'}" ng-click="isTabActive='edit'">
+						<a class="tab-nav-anchor" href="#!">Edit Section</a>
 					</li>
 				</ul>
-			</main>
+			</nav>
 
-		</div>
+			<div class="container">
+				<div class="tab" ng-class="{'is-active':isTabActive==='new'}">
+					<h2>New Section</h2>
+					<form ng-submit="postSection()">
+						<div class="form__row">
+							<label class="form-label sr-only" for="route">Route</label>
+							<input class="form-input form-input--block" id="route" type="text" placeholder="Route" ng-model="newInput.sectionId">
+						</div>
+						<div class="form__row">
+							<label class="form-label sr-only" for="sectionName">Section Name</label>
+							<input class="form-input form-input--block" id="sectionName" type="text" placeholder="Section Name" ng-model="newInput.sectionName">
+						</div>
+						<div class="form__row">
+							<label class="form-label sr-only" for="sectionHeader">Section Header</label>
+							<input class="form-input form-input--block" id="sectionHeader" type="text" placeholder="Section Header" ng-model="newInput.sectionHeader">
+						</div>
+						<div class="form__row">
+							<label class="form-label sr-only" for="sectionIcon">Icon</label>
+							<input class="form-input form-input--block" id="sectionIcon" type="text" placeholder="Icon" ng-model="newInput.sectionIcon">
+						</div>
+						<button class="btn">Submit</button>
+					</form>
+				</div>
+			
+				<div class="tab" ng-class="{'is-active':isTabActive==='edit'}">
+					<h2>Edit Section</h2>
+					<ul class="list-nostyle">
+						<li ng-repeat="section in sectionList">
+							<div>id: <span ng-bind="section.id"></span></div>
+							<div>name: <span ng-bind="section.sectionName"></span></div>
+							<div>header: <span ng-bind="section.sectionHeader"></span></div>
+							<div>route: /<span ng-bind="section.sectionId"></span></div>
+							<div>icon: <span ng-bind="section.sectionIcon"></span></div>
+							<form class="cms-section-form" id="{{section.id}}" ng-submit="editSection(section.id)">
+								<input class="form-input" type="text" placeholder="route" ng-model="editInput.sectionId">
+								<input class="form-input" type="text" placeholder="name" ng-model="editInput.sectionName">
+								<input class="form-input" type="text" placeholder="header" ng-model="editInput.sectionHeader">
+								<input class="form-input" type="text" placeholder="icon" ng-model="editInput.sectionIcon">
+								<button class="btn" type="Submit">save</button>
+							</form>
+							<button class="btn block btn-edit" id="btn{{section.id}}" ng-click="showForm(section.id)">edit</button>
+							<button class="btn block" ng-click="resetInput()">reset</button>
+							<button class="btn block" ng-click="deleteSection(section)">delete</button>
+							<hr>
+						</li>
+					</ul>
+				</div>
 
+			</div>
+		</main>
+		
+		<footer class="cms-footer">
+			<p class="cms-footer-copyright">&copy;2017 Suitmedia</p>
+		</footer>
+	
 		<script type="text/javascript" src="js/vendor/angular.min.js"></script>
 		<script type="text/javascript" src="main.js"></script>
 	</body>

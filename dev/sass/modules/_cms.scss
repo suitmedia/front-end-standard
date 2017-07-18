@@ -1,0 +1,82 @@
+.cms-header {
+	background: $orange;
+	margin-bottom: $space / 1.5;
+	padding: ($space * 2) 0;
+	color: $white;
+
+	h1 {
+		text-align: center;
+		font-weight: 300;
+		margin-bottom: 0;
+	}
+}
+
+.cms-main {
+	min-height: 100vh;
+	margin-bottom: $space * 1.5;
+}
+
+.cms-section-form {
+	display: none;
+}
+
+.cms-section-title {
+	text-align: center;
+}
+
+.cms-modal {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	padding: $space 0;
+	width: 100%;
+	height: 100vh;
+
+	&.is-active {
+		display: block;
+	}
+}
+
+.cms-modal-dim {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background: rgba(0,0,0,0.4);
+}
+
+.cms-modal-body {
+	position: relative;
+	margin: 0 auto;
+	width: 70%;
+	padding: $space 0;
+	background: #fff;
+	z-index: 5;
+}
+
+.cms-modal-exit {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: inline-block;
+	width: $space * 2;
+	height: $space * 1.5;
+	background: $black;
+	color: $white;
+	border: none;
+	cursor: pointer;
+}
+
+.cms-footer {
+	padding: $space 0;
+	background: $black70;
+	color: $white;
+	text-align: center;
+}
+
+.cms-footer-copyright  {
+	margin-bottom: 0;
+}

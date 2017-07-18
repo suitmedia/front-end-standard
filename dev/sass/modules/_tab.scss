@@ -1,0 +1,32 @@
+.tab-nav {
+	margin-bottom: $space;
+}
+
+.tab-nav-list {
+	border-bottom: solid 1px $black30;
+	text-align: center;
+}
+
+.tab-nav-item {
+	border-bottom: solid 2px transparent;
+
+	&.is-active {
+		border-bottom-color: $orange;
+		& > a {
+			color: $orange;
+		}
+	}
+}
+
+.tab-nav-anchor {
+	display: inline-block;
+	padding: 0 ($space / 3) ($space / 2);
+}
+
+.tab {
+	display: none;
+
+	&.is-active {
+		display: block;
+	}
+}
