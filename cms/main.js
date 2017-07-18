@@ -90,9 +90,9 @@ app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
 	
 	$scope.updateModule = () => {
 		$http.post('moduleEdit', $scope.editModule).then( (res, req) => {
-			console.log(res)
 			$scope.getModule()
 			$scope.resetInput()
+			hideModal()
 		})
 	}
 
@@ -106,24 +106,37 @@ app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
 		$scope.newModule = {}
 	}
 
-	$scope.showModal = (module) => {
-		let modal = document.querySelector('.modal')
-
+	$scope.loadModal = (module) => {
 		$scope.editModule = module
 		$http.get(`getModule/${module.id}`).then( (res, req) => {
 			$scope.editModule.content = res.data
 		})
-
-		modal.style.display='block'
-		document.querySelector('.modal-exit').addEventListener('click', e => {
-			modal.style.display='none'
-		})
+		showModal()
 	}
 
 	$scope.init = () => {
 		$scope.getSection()
 		$scope.getModule()
+		initModal()
 	}
-
+	
 }])
 
+
+
+
+const initModal = () => {
+	document.querySelector('.modal-exit').addEventListener('click', e => {
+		hideModal()
+	})
+}
+
+const showModal = () => {
+	let modal = document.querySelector('.modal')
+	modal.style.display = 'block'
+}
+
+const hideModal = () => {
+	let modal = document.querySelector('.modal')
+	modal.style.display = 'none'
+}

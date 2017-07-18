@@ -17,7 +17,7 @@ app.use(bodyParser.json())
 
 /* CORE FUNCTION */
 
-const readConfig = (configFile) => {
+const readConfig = configFile => {
   let section = fs.readFileSync(`configs/${configFile}list.js`, "utf8").split('\n')
 
   section.shift()
@@ -31,7 +31,7 @@ const storeSection = newData => {
   fs.writeFileSync('configs/sectionlist.js', buffer, {encoding: 'utf8'})
 }
 
-const storeModule = (newData) => {
+const storeModule = newData => {
 	const topBuffer = 'var moduleList = \n'
 	let buffer = topBuffer + JSON.stringify(newData)
  
@@ -39,13 +39,17 @@ const storeModule = (newData) => {
 }
 
 const writeFile = (content, module) => {
-
 	if (content) {
 		let newContent = `## ${module.name}\n${content}`
 
   	fs.writeFileSync(module.url, newContent, {encoding: 'utf8'})
   }
 }
+
+const removeFile = moduleId => {
+	fs.unlinkSync(`modules/${moduleId}.html`)
+}
+
 
 
 
@@ -137,8 +141,6 @@ app.get('/getModule/:moduleId', (req, res) => {
 	const rawContent = fs.readFileSync(`modules/${id}.html`, "utf8")
 	const content = rawContent.split('\n').splice(1).join('\n')
 
-	//console.log(content)
-
 	res.send(content)
 })
 
@@ -168,7 +170,7 @@ app.post('/moduleDelete', (req, res) => {
 	})
 	
 	storeModule(buffer)
-	fs.unlinkSync(`modules/${id}.html`)
+	removeFile(id)
 
 	res.send('ok')
 })
@@ -192,9 +194,6 @@ app.post('/moduleEdit', (req, res) => {
 			return obj
 	})
 	
-	//console.log(buffer)
-	//console.log(content)
-
 	storeModule(buffer)
 	writeFile(content, input)
 
@@ -212,5 +211,5 @@ app.post('/moduleEdit', (req, res) => {
 /* WEB SERVER */
 
 app.listen(5000, () => {
-	console.log('running on 5000')
+	console.log('running on localhost:5000')
 })

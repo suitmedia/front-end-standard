@@ -5,8 +5,7 @@
 1. Make sure you have NodeJS installed (at least v6.4.0)
 2. Install required dependencies
 ```
-npm install express --save
-npm install body-parser --save
+npm install
 ```
 3. Run the CMS application
 ```
