@@ -1,0 +1,95 @@
+.sidebar {
+	position: fixed;
+	top: 0;
+	z-index: 10;
+	width: $space * 9;
+	height: 100vh;
+	background: $black;
+	color: $white;
+	transform: translateX(-($space * 9));
+	transition: all .4s ease;
+	
+	&.is-active {
+		transform: translateX(0);
+	}
+}
+
+.sidebar-dim {
+	position: fixed;
+	display: none;
+	width: 200vw;
+	height: 100vh;
+	background: $black;
+	opacity: .8;
+
+	.sidebar.is-active & {
+		display: block;
+	}
+}
+
+.sidebar-logo {
+	position: relative;
+	z-index: 1;
+	padding: $space;
+	border-bottom: solid 1px $black90;
+	margin-bottom: $space;
+}
+
+.sidebar-trigger {
+	position: absolute;
+	top: $space * 2;
+	left: $space;
+	background: transparent;
+	border: none;
+	color: $white;
+	cursor: pointer;
+	outline: none;
+}
+
+.sidebar-links {
+
+}
+
+.sidebar-close {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	z-index: 1;
+	margin: $space / 8;
+	display: none;
+	background: transparent;
+	border: none;
+	font-size: 3em;
+	color: $white;
+	outline: none;
+	cursor: pointer;
+
+	.sidebar.is-active & {
+		display: block;
+	}
+}
+
+.sidebar-item {
+	position: relative;
+	padding: 0 $space;
+	margin-bottom: $space / 4;
+
+	&:hover {
+
+	}
+
+	&.is-active:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 2px;
+		height: 100%;
+		background: $orange;
+	}
+
+}
+
+.sidebar-anchor {
+	display: block;
+}

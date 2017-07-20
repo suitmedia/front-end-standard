@@ -1,4 +1,4 @@
-<html ng-app="cms">
+<html ng-app="cms" ng-controller="mainController">
 	<head>
 		<meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -17,11 +17,31 @@
 	<body ng-controller="sectionController" ng-init="getSection()">
 		
 		<header class="cms-header">
+			<button class="sidebar-trigger" ng-click="toggleSidebar()">
+				<i class="fa fa-bars fa-2x"></i>
+			</button>
 			<div class="container">
 				<h1>Suitmedia Front-end Standards CMS | Section Editor</h1>
 			</div>
 		</header>
-					
+
+		<nav class="sidebar" ng-class="{'is-active': isSidebarActive}">
+			<div class="sidebar-dim"></div>
+			<button class="sidebar-close" ng-click="toggleSidebar()">&times;</button>
+			<div class="sidebar-logo">
+				<img src="img/favicon.png" alt="">
+				<h3>Front-end Standards CMS</h3>
+			</div>
+			<ul class="sidebar-links list-nostyle">
+				<li class="sidebar-item">
+					<a class="sidebar-anchor" href="/module">Module Editor</a>
+				</li>
+				<li class="sidebar-item is-active">
+					<a class="sidebar-anchor" href="/section">Section Editor</a>
+				</li>
+			</ul>
+		</nav>
+
 		<main class="cms-main">
 			
 			<nav class="tab-nav">

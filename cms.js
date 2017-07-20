@@ -24,18 +24,11 @@ const readConfig = configFile => {
   return (JSON.parse(section.join('\n')))
 }
 
-const storeSection = newData => {
-	const topBuffer = 'var sectionList = \n'
+const storeConfig = (configFile, newData) => {
+	const topBuffer = `var ${configFile}List = \n`
 	let buffer = topBuffer + JSON.stringify(newData)
 	
-  fs.writeFileSync('configs/sectionlist.js', buffer, {encoding: 'utf8'})
-}
-
-const storeModule = newData => {
-	const topBuffer = 'var moduleList = \n'
-	let buffer = topBuffer + JSON.stringify(newData)
- 
-  fs.writeFileSync('configs/modulelist.js', buffer, {encoding: 'utf8'})
+  fs.writeFileSync(`configs/${configFile}list.js`, buffer, {encoding: 'utf8'})
 }
 
 const writeFile = (content, module) => {
@@ -61,7 +54,7 @@ const removeFile = moduleId => {
 /* ROUTES */
 
 app.get('/', (req, res) => {
-	res.sendFile(path.join(`${__dirname}/cms/index.html`))
+	res.redirect('/module')
 })
 
 app.get('/module', (req, res) => {
@@ -95,7 +88,7 @@ app.post('/sectionAdd', (req, res) => {
 
 	newSection.id = Date.now()
 	bufferObj.push(newSection)
-	storeSection(bufferObj)
+	storeConfig('section', bufferObj)
 	res.send('ok')
 })
 
@@ -105,7 +98,7 @@ app.post('/sectionDelete', (req, res) => {
 		return !( obj.id === id )
 	})
 	
-	storeSection(buffer)
+	storeConfig('section', buffer)
 	res.send('ok')
 })
 
@@ -126,7 +119,7 @@ app.post('/sectionEdit', (req, res) => {
 			return obj
 	})
 
-	storeSection(buffer)
+	storeConfig('section', buffer)
 	res.send('ok')
 })
 
@@ -157,7 +150,7 @@ app.post('/moduleAdd', (req, res) => {
 
 	bufferObj.push(newModule)
 
-	storeModule(bufferObj)
+	storeConfig('module', bufferObj)
 	writeFile(content, newModule)
 
 	res.send('ok')
@@ -169,7 +162,7 @@ app.post('/moduleDelete', (req, res) => {
 		return !( obj.id === id )
 	})
 	
-	storeModule(buffer)
+	storeConfig('module', buffer)
 	removeFile(id)
 
 	res.send('ok')
@@ -194,7 +187,7 @@ app.post('/moduleEdit', (req, res) => {
 			return obj
 	})
 	
-	storeModule(buffer)
+	storeConfig('module', buffer)
 	writeFile(content, input)
 
 	res.send('ok')

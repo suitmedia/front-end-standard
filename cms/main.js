@@ -1,5 +1,17 @@
 const app = angular.module('cms', [])
 
+app.controller('mainController', ['$scope', ($scope) => {
+	$scope.isSidebarActive = false
+
+	$scope.toggleSidebar = () => {
+		if ($scope.isSidebarActive) {
+			$scope.isSidebarActive = false
+		} else {
+			$scope.isSidebarActive = true
+		}
+	}
+}])
+
 app.controller('sectionController', ['$scope', '$http', ($scope, $http) => {
 	$scope.sectionList = [{}]
 	$scope.newInput = {}
