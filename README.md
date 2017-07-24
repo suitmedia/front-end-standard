@@ -9,6 +9,6 @@ npm install
 ```
 3. Run the CMS application
 ```
-node cms.js
+npm start
 ```
-4. Open the CMS application via browser through **_http://localhost:5000_**
+4. CMS application will be opened from browser through **_http://localhost:5000_**

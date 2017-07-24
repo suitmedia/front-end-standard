@@ -4,6 +4,9 @@
   "authors": [
     "Suitmedia"
   ],
+  "scripts": {
+    "start": "node cms.js"
+  },
   "description": "suit-baze is a Front-end starter kit base on HTML5 Boilerplate, modified by Suitmedia",
   "license": "MIT",
   "repository": {
@@ -34,6 +37,7 @@
   },
   "dependencies": {
     "body-parser": "^1.17.2",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "opn": "^5.1.0"
   }
 }

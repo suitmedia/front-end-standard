@@ -1,54 +1,14 @@
 const express = require('express')
-const fs = require('fs')
 const path = require('path')
+const opn = require('opn')
 const bodyParser = require('body-parser')
+const db = require('./cms/db.js')
 const app = express()
+const port = 5000
 
 app.use(express.static('cms'))
 app.use(express.static('assets'))
 app.use(bodyParser.json())
-
-
-
-
-
-
-
-
-/* CORE FUNCTION */
-
-const readConfig = configFile => {
-  let section = fs.readFileSync(`configs/${configFile}list.js`, "utf8").split('\n')
-
-  section.shift()
-  return (JSON.parse(section.join('\n')))
-}
-
-const storeConfig = (configFile, newData) => {
-	const topBuffer = `var ${configFile}List = \n`
-	let buffer = topBuffer + JSON.stringify(newData)
-	
-  fs.writeFileSync(`configs/${configFile}list.js`, buffer, {encoding: 'utf8'})
-}
-
-const writeFile = (content, module) => {
-	if (content) {
-		let newContent = `## ${module.name}\n${content}`
-
-  	fs.writeFileSync(module.url, newContent, {encoding: 'utf8'})
-  }
-}
-
-const removeFile = moduleId => {
-	fs.unlinkSync(`modules/${moduleId}.html`)
-}
-
-
-
-
-
-
-
 
 
 /* ROUTES */
@@ -66,72 +26,63 @@ app.get('/section', (req, res) => {
 })
 
 
-
-
-
-
-
-
-
-
 /* APIs */
 
 app.get('/sectionList', (req, res) => {
-	const bufferObj = readConfig('section')
+	const buffer = db.readData('section')
 	
-	res.send(bufferObj)
+	res.send(buffer)
 })
 
 app.post('/sectionAdd', (req, res) => {
 	let newSection = req.body
-	let bufferObj = readConfig('section')
+	let buffer = db.readData('section')
 
 	newSection.id = Date.now()
-	bufferObj.push(newSection)
-	storeConfig('section', bufferObj)
+	buffer.push(newSection)
+	db.updateData('section', buffer)
 	res.send('ok')
 })
 
 app.post('/sectionDelete', (req, res) => {
 	const id = req.body.id
-	let buffer = readConfig('section').filter( obj => {
-		return !( obj.id === id )
+	let buffer = db.readData('section').filter( obj => {
+		return (obj.id !== id)
 	})
 	
-	storeConfig('section', buffer)
+	db.updateData('section', buffer)
 	res.send('ok')
 })
 
 app.post('/sectionEdit', (req, res) => {
 	const rawInput = req.body
 	const input = {id: rawInput.id}
-	if (rawInput.sectionId) input.sectionId = rawInput.sectionId
-	if (rawInput.sectionName) input.sectionName = rawInput.sectionName
-	if (rawInput.sectionHeader) input.sectionHeader = rawInput.sectionHeader
-	if (rawInput.sectionIcon) input.sectionIcon = rawInput.sectionIcon
+	if ( rawInput.sectionId ) input.sectionId = rawInput.sectionId
+	if ( rawInput.sectionName ) input.sectionName = rawInput.sectionName
+	if ( rawInput.sectionHeader ) input.sectionHeader = rawInput.sectionHeader
+	if ( rawInput.sectionIcon ) input.sectionIcon = rawInput.sectionIcon
 
-	let buffer = readConfig('section').map( obj => {
-		if (obj.id === input.id) {
+	let buffer = db.readData('section').map( obj => {
+		if ( obj.id === input.id ) {
 			const newData = Object.assign(obj, input)
 			return newData
 		}
-		else
-			return obj
+		return obj
 	})
 
-	storeConfig('section', buffer)
+	db.updateData('section', buffer)
 	res.send('ok')
 })
 
 app.get('/moduleList', (req, res) => {
-	const bufferObj = readConfig('module')
+	const buffer = db.readData('module')
 	
-	res.send(bufferObj)
+	res.send(buffer)
 })
 
 app.get('/getModule/:moduleId', (req, res) => {
 	const id = req.params.moduleId
-	const rawContent = fs.readFileSync(`modules/${id}.html`, "utf8")
+	const rawContent = db.readFile(`modules/${id}.html`)
 	const content = rawContent.split('\n').splice(1).join('\n')
 
 	res.send(content)
@@ -140,7 +91,7 @@ app.get('/getModule/:moduleId', (req, res) => {
 app.post('/moduleAdd', (req, res) => {
 	const id = Date.now()
 	const content = req.body.content
-	let bufferObj = readConfig('module')
+	let buffer = db.readData('module')
 	let newModule = {
 		id,
 		name: req.body.name,
@@ -148,22 +99,22 @@ app.post('/moduleAdd', (req, res) => {
 		url: `modules/${id}.html`,
 	}
 
-	bufferObj.push(newModule)
+	buffer.push(newModule)
 
-	storeConfig('module', bufferObj)
-	writeFile(content, newModule)
+	db.updateData('module', buffer)
+	db.writeFile(content, newModule)
 
 	res.send('ok')
 })
 
 app.post('/moduleDelete', (req, res) => {
 	const id = req.body.id
-	let buffer = readConfig('module').filter( obj => {
-		return !( obj.id === id )
+	let buffer = db.readData('module').filter( obj => {
+		return (obj.id !== id)
 	})
 	
-	storeConfig('module', buffer)
-	removeFile(id)
+	db.updateData('module', buffer)
+	db.removeFile(id)
 
 	res.send('ok')
 })
@@ -178,31 +129,24 @@ app.post('/moduleEdit', (req, res) => {
 		section: rawInput.section
 	}
 	
-	let buffer = readConfig('module').map( obj => {
-		if (obj.id === input.id) {
+	let buffer = db.readData('module').map( obj => {
+		if ( obj.id === input.id ) {
 			const newData = Object.assign(obj, input)
 			return newData
 		}
-		else
-			return obj
+		return obj
 	})
 	
-	storeConfig('module', buffer)
-	writeFile(content, input)
+	db.updateData('module', buffer)
+	db.writeFile(content, input)
 
 	res.send('ok')
 })
 
 
-
-
-
-
-
-
-
 /* WEB SERVER */
 
-app.listen(5000, () => {
-	console.log('running on localhost:5000')
+app.listen(port, () => {
+	console.log(`running on localhost:${port}`)
+	opn(`http://localhost:${port}`)
 })
