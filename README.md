@@ -5,10 +5,10 @@
 1. Make sure you have NodeJS installed (at least v6.4.0)
 2. Install required dependencies
 ```
-npm install
+$ npm install
 ```
 3. Run the CMS application
 ```
-npm start
+$ npm start
 ```
 4. CMS application will be opened from browser through **_http://localhost:5000_**

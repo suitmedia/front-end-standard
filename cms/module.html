@@ -61,20 +61,20 @@
 					<h2 class="cms-section-title">New Module</h2>
 					<form ng-submit="postModule()">
 						<div class="form__row">
-							<label class="form-label" for="newModuleTitle">Title</label>
-							<input class="form-input form-input--block" id="newModuleTitle" type="text" placeholder="Module Title" ng-model="newModule.name">
+							<label class="form-label" for="newModuleTitle">Title <small class="text-red">(*required)</small></label>
+							<input class="form-input form-input--cms form-input--block" id="newModuleTitle" type="text" placeholder="Module Title" ng-model="newModule.name">
 						</div>
 						<div class="form__row">
-							<label class="form-label" for="newModuleTitle">Section</label>
-							<select class="form-input form-input--block" id="newModuleSection" ng-model="newModule.section">
+							<label class="form-label" for="newModuleTitle">Section <small class="text-red">(*required)</small></label>
+							<select class="form-input form-input--cms form-input--block" id="newModuleSection" ng-model="newModule.section">
 								<option ng-repeat="section in sectionList" ng-value="section.id">{{section.sectionName}}</option>
 							</select>
 						</div>
 						<div class="form__row">
 							<label class="form-label" for="newModuleContent">Content</label>
-							<textarea class="form-input form-input--block" id="newModuleContent" rows="10" placeholder="Module Content (on markdown format)" ng-model="newModule.content"></textarea>
+							<textarea class="form-input form-input--cms form-input--block" id="newModuleContent" rows="10" placeholder="Module Content (on markdown format)" ng-model="newModule.content"></textarea>
 						</div>
-						<button type="submit" class="btn">Submit</button>
+						<button type="submit" class="btn btn--cms btn--block" ng-disabled="!newModule.name || !newModule.section">Submit</button>
 					</form>
 				</div>
 
@@ -87,8 +87,8 @@
 								<p class="card-detail" ng-bind="module.url"></p>
 							</div>
 							<div class="card-footer">
-								<button class="btn" ng-click="loadModal(module)">edit</button>
-								<button class="btn" ng-click="deleteModule(module)">delete</button>
+								<button class="btn btn--cms" ng-click="loadModal(module)">edit</button>
+								<button class="btn btn--cms" ng-click="deleteModule(module)">delete</button>
 							</div>
 						</li>
 					</ul>
@@ -101,14 +101,14 @@
 						<div class="container">
 							<form ng-submit="updateModule()">
 								<label for="moduleTitle">Title</label>
-								<input class="form-input form-input--block block" id="moduleTitle" type="text" placeholder="Module Title" ng-model="editModule.name">
+								<input class="form-input form-input--cms form-input--block block" id="moduleTitle" type="text" placeholder="Module Title" ng-model="editModule.name">
 								<label for="moduleSection">Section</label>
-								<select class="form-input form-input--block block" id="moduleSection" ng-model="editModule.section">
+								<select class="form-input form-input--cms form-input--block block" id="moduleSection" ng-model="editModule.section">
 									<option ng-repeat="section in sectionList" ng-value="section.id">{{section.sectionName}}</option>
 								</select>
 								<label for="moduleContent">Content</label>
-								<textarea class="form-input form-input--block block" id="moduleContent" rows="10" placeholder="Module Content (on markdown format)" ng-model="editModule.content"></textarea>
-								<button type="submit" class="btn btn--block">Save</button>
+								<textarea class="form-input form-input--cms form-input--block block" id="moduleContent" rows="10" placeholder="Module Content (on markdown format)" ng-model="editModule.content"></textarea>
+								<button type="submit" class="btn btn--cms btn--block">Save</button>
 							</form>
 						</div>
 					</div>

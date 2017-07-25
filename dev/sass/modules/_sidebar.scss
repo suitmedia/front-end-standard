@@ -1,16 +1,16 @@
 .sidebar {
 	position: fixed;
 	top: 0;
+	right: 100%;
 	z-index: 10;
 	width: $space * 9;
 	height: 100vh;
 	background: $black;
 	color: $white;
-	transform: translateX(-($space * 9));
 	transition: all .4s ease;
 	
 	&.is-active {
-		transform: translateX(0);
+		transform: translateX(100%);
 	}
 }
 

@@ -4,11 +4,7 @@ app.controller('mainController', ['$scope', ($scope) => {
 	$scope.isSidebarActive = false
 
 	$scope.toggleSidebar = () => {
-		if ($scope.isSidebarActive) {
-			$scope.isSidebarActive = false
-		} else {
-			$scope.isSidebarActive = true
-		}
+		$scope.isSidebarActive = !$scope.isSidebarActive
 	}
 }])
 
@@ -28,6 +24,7 @@ app.controller('sectionController', ['$scope', '$http', ($scope, $http) => {
 	$scope.postSection = () => {
 		$http.post('sectionAdd', $scope.newInput).then( () => {
 			$scope.getSection()
+			alert(`Section ${$scope.newInput.sectionName} has been created!`)
 			$scope.resetInput()
 		})
 	}
@@ -35,6 +32,7 @@ app.controller('sectionController', ['$scope', '$http', ($scope, $http) => {
 	$scope.deleteSection = (section) => {
 		$http.post('sectionDelete', section).then( () => {
 			$scope.getSection()
+			alert(`Section ${section.sectionName} has been deleted!`)
 		})
 	}
 	
@@ -49,6 +47,9 @@ app.controller('sectionController', ['$scope', '$http', ($scope, $http) => {
 
 		$http.post('sectionEdit', newData).then( () => {
 			$scope.getSection()
+			if(newData.sectionName || newData.sectionId || newData.sectionHeader || newData.sectionIcon){
+				alert(`Section ${newData.sectionName} has been updated!`)
+			}
 		})
 	}
 
@@ -60,7 +61,6 @@ app.controller('sectionController', ['$scope', '$http', ($scope, $http) => {
 	$scope.showForm = (target) => {
 		$scope.resetInput()
 		$scope.isFormActive = target
-		console.log($scope.isFormActive)
 	}
 
 }])
@@ -89,6 +89,7 @@ app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
 	$scope.postModule = () => {
 		$http.post('moduleAdd', $scope.newModule).then( () => {
 			$scope.getModule()
+			alert(`Module '${$scope.newModule.name}' has been created!`)
 			$scope.resetInput()
 		})
 	}
@@ -98,6 +99,7 @@ app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
 			$scope.getModule()
 			$scope.resetInput()
 			$scope.dismissModal()
+			alert(`Module '${$scope.editModule.name}' has been updated!`)
 		})
 	}
 
@@ -106,9 +108,9 @@ app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
 
 		$http.post('moduleDelete', module).then( () => {
 			$scope.getModule()
-		}).then( () => {
 			$scope.changeTab(sectionId)
-		})
+			alert(`Module '${module.name}' has been deleted!`)
+		})		
 	}
 
 	$scope.resetInput = () => {

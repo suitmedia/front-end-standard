@@ -1,17 +1,17 @@
 {
-  "name": "suit-baze",
-  "version": "1.17.0",
+  "name": "suitmedia-frontend-standards",
+  "version": "1.0.0",
   "authors": [
     "Suitmedia"
   ],
   "scripts": {
     "start": "node cms.js"
   },
-  "description": "suit-baze is a Front-end starter kit base on HTML5 Boilerplate, modified by Suitmedia",
+  "description": "A reactive-static web page for front-end code preferences in Suitmedia with CMS included.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ImBobby/suit-baze"
+    "url": "https://github.com/suitmedia/front-end-standard"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

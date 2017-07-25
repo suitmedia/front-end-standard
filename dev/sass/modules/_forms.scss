@@ -93,3 +93,10 @@ input[type="number"] {
 .form-input--block {
     width: 100%;
 }
+
+.form-input--cms {
+    
+    &:focus {
+        border-color: $orange;
+    }
+}

@@ -26,7 +26,7 @@
 		</header>
 
 		<nav class="sidebar" ng-class="{'is-active': isSidebarActive}">
-			<div class="sidebar-dim"></div>
+			<div class="sidebar-dim" ng-click="toggleSidebar()"></div>
 			<button class="sidebar-close" ng-click="toggleSidebar()">&times;</button>
 			<div class="sidebar-logo">
 				<img src="img/favicon.png" alt="">
@@ -60,10 +60,6 @@
 					<h2>New Section</h2>
 					<form ng-submit="postSection()">
 						<div class="form__row">
-							<label class="form-label sr-only" for="route">Route</label>
-							<input class="form-input form-input--block" id="route" type="text" placeholder="Route" ng-model="newInput.sectionId">
-						</div>
-						<div class="form__row">
 							<label class="form-label sr-only" for="sectionName">Section Name</label>
 							<input class="form-input form-input--block" id="sectionName" type="text" placeholder="Section Name" ng-model="newInput.sectionName">
 						</div>
@@ -72,10 +68,14 @@
 							<input class="form-input form-input--block" id="sectionHeader" type="text" placeholder="Section Header" ng-model="newInput.sectionHeader">
 						</div>
 						<div class="form__row">
+							<label class="form-label sr-only" for="route">Route</label>
+							<input class="form-input form-input--block" id="route" type="text" placeholder="Route" ng-model="newInput.sectionId">
+						</div>
+						<div class="form__row">
 							<label class="form-label sr-only" for="sectionIcon">Icon</label>
 							<input class="form-input form-input--block" id="sectionIcon" type="text" placeholder="Icon" ng-model="newInput.sectionIcon">
 						</div>
-						<button class="btn btn--block">Create</button>
+						<button class="btn btn--cms btn--block" ng-disabled="!newInput.sectionId || !newInput.sectionName || !newInput.sectionHeader || !newInput.sectionIcon">Create</button>
 					</form>
 				</div>
 			
@@ -93,11 +93,11 @@
 								<input class="form-input" type="text" placeholder="Section Header" ng-model="editInput.sectionHeader">
 								<input class="form-input" type="text" placeholder="Route" ng-model="editInput.sectionId">
 								<input class="form-input" type="text" placeholder="Icon" ng-model="editInput.sectionIcon">
-								<button class="btn" type="Submit">save</button>
+								<button class="btn btn--cms" type="Submit">save</button>
 							</form>
-							<button class="btn block" ng-click="showForm(section.id)" ng-hide="isFormActive===section.id">edit</button>
-							<button class="btn block" ng-click="resetInput()">reset</button>
-							<button class="btn block" ng-click="deleteSection(section)">delete</button>
+							<button class="btn btn--cms block" ng-click="showForm(section.id)" ng-hide="isFormActive===section.id">edit</button>
+							<button class="btn btn--cms block" ng-click="resetInput()">reset</button>
+							<button class="btn btn--cms block" ng-click="deleteSection(section)">delete</button>
 							<hr>
 						</li>
 					</ul>
