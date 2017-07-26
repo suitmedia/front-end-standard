@@ -1,5 +1,4 @@
-## Don't use CSS @import
-
+## Don`t use CSS @import
 Alasan kenapa jangan menggunakan CSS `@import` adalah:
 
 * File CSS yang dipanggil via @import tidak di cache di browser.
@@ -8,11 +7,11 @@ Alasan kenapa jangan menggunakan CSS `@import` adalah:
 
 
 ```
-/* NO! */
+// ☹️
 @import url('hello.css');
 ```
 ```                             
-&lt;!-- YES! -->
+// 😎
 &lt;link rel="stylesheet" href="hello.css"&gt;
 &lt;!-- or use scss import -->
 ```

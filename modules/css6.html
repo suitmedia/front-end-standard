@@ -1,5 +1,4 @@
 ## No ID and !important in CSS
-
 Jangan ada deklarasi ID ataupun !important di dalam CSS karena ID memiliki tingkat [specificity yang tinggi](http://www.smashingmagazine.com/2007/07/27/css-specificity-things-you-should-know/).
 
 Apabila memang terpaksa harus menggunakan, gunakan attribute selector. Ini adalah sebuah hack dan sebisa mungkin jangan sampai ada.
@@ -7,7 +6,7 @@ Apabila memang terpaksa harus menggunakan, gunakan attribute selector. Ini adala
 Penggunakan `!important` hanya diperbolehkan untuk override style third party ataupun style plugin.
 
 ```
-/* NO! */
+// ☹️
 #myElem {
     prop: value;
 }
@@ -16,7 +15,7 @@ button {
     padding: .5em 1em !important;
 }
 
-/* YES! */
+// 😎
 [id="myElem"] {
     prop: value;
 }

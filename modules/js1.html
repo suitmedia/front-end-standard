@@ -1,21 +1,20 @@
 ## Code structure
-
 Suitmedia menggunakan object literal sebagai struktur kode yang di mana dibungkus ke dalam sebuah IIFE (Immediately-invoked function expression).
 
 ```
-;(function ( window, document, undefined ) {
-    var Site = {
-        
-        init: function () {
-            this.feature1();
-        },
+;((window, document, undefined) => {
+  const Site = {
+    feature1() {
 
-        feature1: function () {
+    },
 
-        }
-    };
+    feature2() {
 
-    Site.init();
-})( window, document );
+    }
+  }
+
+  for ( let fn in Site ) {
+    Site[fn]()
+  }
+})(window, document);
 ```
-

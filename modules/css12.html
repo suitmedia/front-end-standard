@@ -1,5 +1,4 @@
 ## Use transform and opacity for high performance animation
-
 Untuk membuat animasi contoh pada saat image di hover, image membesar, jangan gunakan width dan height.
 Gunakan property `transform` agar dapat dirender menggunakan GPU, bukan CPU. Pada dasarnya, untuk mendapatkan high performance animation, gunakan:
 
@@ -10,7 +9,7 @@ Gunakan property `transform` agar dapat dirender menggunakan GPU, bukan CPU. Pad
 
 
 ```css
-/* NO! */
+// ☹️
 div {
     position: relative;
     top: 0;
@@ -21,7 +20,7 @@ div {
     }
 }
 
-/* YES! */
+// 😎
 div {
     trasnform: translateY(0);
     transition: all .3s ease;

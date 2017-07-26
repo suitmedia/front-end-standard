@@ -1,15 +1,13 @@
-### Prefix '$'
-
-
+## Prefix $
 Prefix jQuery object menggunakan karakter '$' untuk membedakan antara jQuery Object dengan DOM Element
 
 
 ```
-// Not good
-var btnSubmit = $('#btnSubmit');
-var btnCancel = document.querySelector('#btnCancel');
+// ☹️
+const btnSubmit = $('#btnSubmit');
+const btnCancel = document.querySelector('#btnCancel');
 
-// Much better
-var $btnSubmit = $('#btnSubmit');
-var btnCancel  = document.querySelector('#btnCancel');
+// 😎
+const $btnSubmit = $('#btnSubmit');
+const btnCancel  = document.querySelector('#btnCancel');
 ```

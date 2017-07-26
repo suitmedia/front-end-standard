@@ -1,17 +1,16 @@
 ## Gunakan strict equality ( === )
-
 Strict equality tidak hanya membandingkan value, namun juga membandingkan tipe value. Menggunakan lenient equality ( == ) hanya membanding value, namun tidak validasi tipe value.
 
 ```
-// Lenient equality
-var a = '1', // string
-    b = 1;   // number
+// ☹️
+const a = '1'; // string
+const b = 1;   // number
 
 console.log( a == b ); // true
 
-// Strict equality
-var a = '1', // string
-    b = 1;   // number
+// 😎
+const a = '1'; // string
+const b = 1;   // number
 
 console.log( a === b ); // false
 ```

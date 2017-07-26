@@ -1,19 +1,17 @@
 ## Cache selector dan string.
-
 Tujuan dari cache selector ini adalah agar browser tidak perlu melakukan operasi yang sama berulang-ulang.
 
-
 ```
-// bad
+// ☹️
 if ( $('.wrapper').hasClass('active') ) {
     $('.wrapper').removeClass('active');
 } else {
     $('.wrapper').addClass('active');
 }
 
-// good
-var $wrapper    = $('.wrapper'),
-    active      = 'foo';
+// 😎
+const $wrapper = $('.wrapper');
+const active = 'foo';
 
 if ( $wrapper.hasClass( active ) ) {
     $wrapper.addClass( active );

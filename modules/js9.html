@@ -1,13 +1,14 @@
-## Unbind event handler sebelum menambahkan event handler.
-
-Hal ini untuk menghindari sebuah event di trigger 2 kali apabila sebuah function dipanggil kembali.
-
+## Selalu set event namespace
+Pada saat meregister sebuah event ke sebuah element, selalu gunakan namespace. Hal ini bertujuan agar developer lebih mudah detach event apabila sebuah element mempunyai event contoh click lebih dari 2. 
 
 ```
-var openMenu = function () {
-    // Scary code goes here...
-};
+const toggleMenu = () => {
+  // Put magic here
+}
 
-btn.off('click', openMenu);
-btn.click( openMenu );
+// attach event
+$btn.on('click.toggleMenu', toggleMenu);
+
+// detach event with affecting other click event attached.
+$btn.off('click.toggleMenu', toggleMenu);
 ```

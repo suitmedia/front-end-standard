@@ -1,5 +1,4 @@
 ## Return early
-
 Return early apabila element yang akan dipakai tidak ada. Tujuannya adalah:
 
 * Body code akan tetap berada di level paling luar
@@ -9,54 +8,21 @@ Perlu diperhatikan bahwa cara pengecekan sebuah element ada atau tidak, berbeda 
 
 
 ```
-// bad
-(function () {
-    var $btn = $('button');
+// ☹️
+(() => {
+    const $btn = $('button');
 
     if ( btn.length ) {
         btn.click( openMenu );
     }
 })();
 
-// good
-(function () {
-    var $btn = $('button');
+// 😎
+(() => {
+    const $btn = $('button');
 
     if ( !$btn.length ) return;
 
     $btn.click( openMenu );
 })();
-```
-
-### Element
-Apabila hanya return 1 element saja seperti:
-
-* getElementById();
-* querySelector();
-
-
-```
-// Element
-var el = document.querySelector('.elem');
-
-if ( !el ) return;
-```
-
-### NodeList/jQuery Object
-deklarasi di bawah akan me-return nodeList/jQuery Object:
-
-* querySelectorAll()
-* $()
-
-
-```
-// Nodelist
-var elems = document.querySelectorAll('.elems');
-
-if ( !elems.length ) return;
-
-//  jQuery Object
-var $elems = $('.elems');
-
-if ( !$elems.length ) return;
 ```
