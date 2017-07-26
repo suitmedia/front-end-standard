@@ -1,4 +1,4 @@
-const app = angular.module('cms', [])
+const app = angular.module('cms', ['ui.sortable'])
 
 app.controller('mainController', ['$scope', ($scope) => {
 	$scope.isSidebarActive = false
@@ -73,6 +73,16 @@ app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
 	$scope.editModule = {}
 	$scope.isModalActive = false
 	$scope.isTabActive = 'new'
+	
+	$scope.updateOrder = () => {
+		$scope.moduleList.forEach( (current, index) => {
+			current.order = index + 1
+		})
+
+		$http.post('moduleUpdate', $scope.moduleList).then( () => {
+			alert(`New order saved`)
+		})
+	}
 
 	$scope.getModule = () => {
 		$http.get('moduleList').then( res => { 
@@ -130,10 +140,16 @@ app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
 	}
 
 	$scope.changeTab = tabId => {
+		const compareOrder = (a, b) => {
+			return a.order - b.order;
+		}
+
 		$scope.isTabActive = tabId
-		$scope.moduleList = $scope.rawModuleList.filter( current => {
-			return current.section == tabId
-		})
+		$scope.moduleList = $scope.rawModuleList
+			.filter( current => {
+				return current.section == tabId
+			})
+			.sort(compareOrder)
 	}
 
 	$scope.init = () => {

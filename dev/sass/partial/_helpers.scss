@@ -78,3 +78,19 @@
 .invisible {
     visibility: hidden;
 }
+
+.hide-on-small {
+    display: none;
+
+    @media #{$large} {
+        display: block;
+    }
+}
+
+.hide-on-large {
+    display: block;
+
+    @media #{$large} {
+        display: none;
+    }
+}

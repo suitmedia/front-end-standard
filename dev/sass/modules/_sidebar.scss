@@ -8,6 +8,7 @@
 	background: $black;
 	color: $white;
 	transition: all .4s ease;
+	will-change: transform;
 	
 	&.is-active {
 		transform: translateX(100%);
@@ -46,10 +47,6 @@
 	outline: none;
 }
 
-.sidebar-links {
-
-}
-
 .sidebar-close {
 	position: absolute;
 	top: 0;
@@ -73,10 +70,6 @@
 	position: relative;
 	padding: 0 $space;
 	margin-bottom: $space / 4;
-
-	&:hover {
-
-	}
 
 	&.is-active:before {
 		content: '';

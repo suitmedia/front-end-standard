@@ -24,8 +24,11 @@
 	}
 }
 
-.cms-section-title {
-	text-align: center;
+.cms-save-order {
+
+	@media #{$large} {
+		float: right;
+	}
 }
 
 .cms-modal {

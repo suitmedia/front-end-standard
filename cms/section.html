@@ -21,12 +21,13 @@
 				<i class="fa fa-bars fa-2x"></i>
 			</button>
 			<div class="container">
-				<h1>Suitmedia Front-end Standards CMS | Section Editor</h1>
+				<h1 class="hide-on-small">Suitmedia Front-end Standards CMS | Section Editor</h1>
+				<h1 class="hide-on-large">Section Editor</h1>
 			</div>
 		</header>
 
 		<nav class="sidebar" ng-class="{'is-active': isSidebarActive}">
-			<div class="sidebar-dim" ng-click="toggleSidebar()"></div>
+			<div class="sidebar-dim"></div>
 			<button class="sidebar-close" ng-click="toggleSidebar()">&times;</button>
 			<div class="sidebar-logo">
 				<img src="img/favicon.png" alt="">
@@ -81,24 +82,26 @@
 			
 				<div class="tab" ng-class="{'is-active':isTabActive==='edit'}">
 					<h2>Edit Section</h2>
-					<ul class="list-nostyle">
-						<li ng-repeat="section in sectionList">
-							<div>id: <span ng-bind="section.id"></span></div>
-							<div>name: <span ng-bind="section.sectionName"></span></div>
-							<div>header: <span ng-bind="section.sectionHeader"></span></div>
-							<div>route: /<span ng-bind="section.sectionId"></span></div>
-							<div>icon: <span ng-bind="section.sectionIcon"></span></div>
-							<form class="cms-section-form" ng-submit="editSection(section.id); showForm('')" ng-class="{'is-active':isFormActive===section.id}">
-								<input class="form-input" type="text" placeholder="Section Name" ng-model="editInput.sectionName">
-								<input class="form-input" type="text" placeholder="Section Header" ng-model="editInput.sectionHeader">
-								<input class="form-input" type="text" placeholder="Route" ng-model="editInput.sectionId">
-								<input class="form-input" type="text" placeholder="Icon" ng-model="editInput.sectionIcon">
-								<button class="btn btn--cms" type="Submit">save</button>
-							</form>
-							<button class="btn btn--cms block" ng-click="showForm(section.id)" ng-hide="isFormActive===section.id">edit</button>
-							<button class="btn btn--cms block" ng-click="resetInput()">reset</button>
-							<button class="btn btn--cms block" ng-click="deleteSection(section)">delete</button>
-							<hr>
+					<ul class="blocklist list-nostyle">
+						<li class="blocklist-item --nohandle" ng-repeat="section in sectionList">
+							<div class="blocklist-body">
+								<p>ID: <span ng-bind="section.id"></span></p>
+								<p>Name: <span ng-bind="section.sectionName"></span></p>
+								<p>Header: <span ng-bind="section.sectionHeader"></span></p>
+								<p>Route: /<span ng-bind="section.sectionId"></span></p>
+								<p>Icon: <span ng-bind="section.sectionIcon"></span></p>
+								<form class="cms-section-form" ng-submit="editSection(section.id); showForm('')" ng-class="{'is-active':isFormActive===section.id}">
+									<input class="form-input" type="text" placeholder="Section Name" ng-model="editInput.sectionName">
+									<input class="form-input" type="text" placeholder="Section Header" ng-model="editInput.sectionHeader">
+									<input class="form-input" type="text" placeholder="Route" ng-model="editInput.sectionId">
+									<input class="form-input" type="text" placeholder="Icon" ng-model="editInput.sectionIcon">
+									<button class="btn btn--cms" type="Submit">Save</button>
+								</form>
+							</div>
+							<div class="blocklist-action">
+								<button class="btn btn--cms" ng-click="showForm(section.id)" ng-hide="isFormActive===section.id">Edit</button>
+								<button class="btn btn--cms" ng-click="deleteSection(section)" ng-hide="isFormActive===section.id">Delete</button>
+							</div>
 						</li>
 					</ul>
 				</div>
@@ -110,7 +113,10 @@
 			<p class="cms-footer-copyright">&copy;2017 Suitmedia</p>
 		</footer>
 	
+		<script type="text/javascript" src="js/vendor/jquery.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="js/vendor/angular.min.js"></script>
+		<script type="text/javascript" src="js/vendor/angular-sortable.min.js"></script>
 		<script type="text/javascript" src="main.js"></script>
 	</body>
 </html>

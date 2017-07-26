@@ -21,7 +21,8 @@
 				<i class="fa fa-bars fa-2x"></i>
 			</button>
 			<div class="container">
-				<h1>Suitmedia Front-end Standards CMS | Module Editor</h1>
+				<h1 class="hide-on-small">Suitmedia Front-end Standards CMS | Module Editor</h1>
+				<h1 class="hide-on-large">Module Editor</h1>
 			</div>
 		</header>
 
@@ -79,16 +80,23 @@
 				</div>
 
 				<div class="tab" ng-repeat="section in sectionList" ng-class="{'is-active':isTabActive==section.id}">
-					<h2 class="cms-section-title">Edit <span ng-bind="section.sectionName"></span></h2>
-					<ul class="card-list list-nostyle">
-						<li class="card-item" ng-repeat="module in moduleList">
-							<div class="card-body">
-								<p class="card-detail card-detail-name" ng-bind="module.name"></p>
-								<p class="card-detail" ng-bind="module.url"></p>
+					<div class="bzg">
+						<div class="bzg_c" data-col="l8">
+							<h2>Edit <span ng-bind="section.sectionName"></span></h2>
+						</div>
+						<div class="bzg_c" data-col="l4">
+							<button class="btn btn--cms block cms-save-order" ng-click="updateOrder()">Save Order</button>
+						</div>
+					</div>
+					<ul class="blocklist list-nostyle" ui-sortable ng-model="moduleList">
+						<li class="blocklist-item" ng-repeat="module in moduleList">
+							<div class="blocklist-body">
+								<p class="blocklist-name" ng-bind="module.name"></p>
+								<p class="blocklist-detail" ng-bind="module.url"></p>
 							</div>
-							<div class="card-footer">
-								<button class="btn btn--cms" ng-click="loadModal(module)">edit</button>
-								<button class="btn btn--cms" ng-click="deleteModule(module)">delete</button>
+							<div class="blocklist-action">
+								<button class="btn btn--cms" ng-click="loadModal(module)">Edit</button>
+								<button class="btn btn--cms" ng-click="deleteModule(module)">Delete</button>
 							</div>
 						</li>
 					</ul>
@@ -120,7 +128,10 @@
 			<p class="cms-footer-copyright">&copy;2017 Suitmedia</p>
 		</footer>
 
+		<script type="text/javascript" src="js/vendor/jquery.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="js/vendor/angular.min.js"></script>
+		<script type="text/javascript" src="js/vendor/angular-sortable.min.js"></script>
 		<script type="text/javascript" src="main.js"></script>
 	</body>
 </html>

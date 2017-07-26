@@ -97,6 +97,7 @@ app.post('/moduleAdd', (req, res) => {
 		name: req.body.name,
 		section: req.body.section,
 		url: `modules/${id}.html`,
+		order: -1
 	}
 
 	buffer.push(newModule)
@@ -139,6 +140,23 @@ app.post('/moduleEdit', (req, res) => {
 	
 	db.updateData('module', buffer)
 	db.writeFile(content, input)
+
+	res.send('ok')
+})
+
+app.post('/moduleUpdate', (req, res) => {
+	const newData = req.body
+	const section = newData[0].section
+	let buffer = db.readData('module')
+	let newBuffer = buffer.filter( (obj => {
+		return obj.section !== section
+	}))
+
+	newData.forEach( (current) => {
+		newBuffer.push(current)
+	})
+
+	db.updateData('module', newBuffer)
 
 	res.send('ok')
 })

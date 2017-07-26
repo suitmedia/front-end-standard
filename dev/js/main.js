@@ -49,14 +49,20 @@
                     $scope.sectionId = 0
                     $scope.pageHeader = ''
                 } else {
+                    const compareOrder = (a, b) => {
+                        return a.order - b.order;
+                    }
                     const activeSection = $rootScope.sectionList
                                             .filter (a => a.sectionId === $routeParams.pageId)
                                             .reduce ( (current, next) => next , null )
+
                     $scope.page = 'page.html'
                     $scope.sectionId = activeSection.id
                     $scope.pageHeader = activeSection.sectionHeader
                     $scope.moduleList = moduleList
                                             .filter( a => a.section === $scope.sectionId)
+                                            .sort(compareOrder)
+
                 }
             }])
 
