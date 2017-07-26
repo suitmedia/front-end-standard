@@ -73,6 +73,10 @@ app.controller('moduleController', ['$scope', '$http', ($scope, $http) => {
 	$scope.editModule = {}
 	$scope.isModalActive = false
 	$scope.isTabActive = 'new'
+	$scope.sortableOpt = {
+		axis: 'y',
+		handle: '.blocklist-handle'
+	}
 	
 	$scope.updateOrder = () => {
 		$scope.moduleList.forEach( (current, index) => {

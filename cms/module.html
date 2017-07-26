@@ -88,8 +88,11 @@
 							<button class="btn btn--cms block cms-save-order" ng-click="updateOrder()">Save Order</button>
 						</div>
 					</div>
-					<ul class="blocklist list-nostyle" ui-sortable ng-model="moduleList">
+					<ul class="blocklist list-nostyle" ui-sortable="sortableOpt" ng-model="moduleList">
 						<li class="blocklist-item" ng-repeat="module in moduleList">
+							<div class="blocklist-handle">
+								<i class="fa fa-ellipsis-v"></i>
+							</div>
 							<div class="blocklist-body">
 								<p class="blocklist-name" ng-bind="module.name"></p>
 								<p class="blocklist-detail" ng-bind="module.url"></p>
