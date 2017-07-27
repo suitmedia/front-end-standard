@@ -1,0 +1,21 @@
+## Utamakan functional programming daripada imperative programming
+Dengan mengaplikasikan paradigma functional programming, kemungkinan adanya bug di dalam kode yang dibuat lebih kecil. Artikel oleh Eric Elliot wajib dibaca untuk [mengetahui lebih dalam mengenai functional programming](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-functional-programming-7f218c68b3a0).
+
+Contoh perbandingan kode functional dan imperative. Terdapat sebuah array of number yang isinya 1, 2, 3, 4, 5. Cari jumlah total angka tersebut.
+
+Imperative:
+```
+const arr = [1, 2, 3, 4, 5];
+let sum = 0;
+
+for ( let i = 0; i < arr.length; i++ ) {
+  sum += arr[i];
+}
+```
+
+Functional:
+```
+const arr = [1, 2, 3, 4, 5];
+
+let sum = arr.map((curr, next) => curr + next);
+```
